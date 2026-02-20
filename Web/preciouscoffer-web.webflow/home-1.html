@@ -175,6 +175,92 @@
         opacity: 0;
       }
     }
+    .projects-overlap {
+  background: #000;
+  padding: 150px 0;
+  position: relative;
+}
+
+.heading-white-center {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 120px;
+}
+
+.project-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 200px;
+}
+
+.project-image img {
+  width: 100%;
+  display: block;
+}
+
+/* IMAGE SIZES */
+.project-image.large {
+  width: 45%;
+}
+
+.project-image.medium {
+  width: 35%;
+}
+
+.project-image.small {
+  width: 28%;
+}
+
+/* OVERLAP EFFECT */
+.project-row.second {
+  margin-top: -120px;
+  justify-content: flex-end;
+}
+
+.project-row.third {
+  margin-top: -140px;
+}
+
+/* TEXT */
+.project-text {
+  width: 35%;
+  color: #fff;
+}
+
+.project-text p {
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.btn-outline {
+  border: 1px solid #ff3c00;
+  color: #ff3c00;
+  padding: 10px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: #ff3c00;
+  color: #fff;
+}
+
+/* MOBILE RESET */
+@media (max-width: 991px) {
+  .project-row {
+    flex-direction: column;
+    margin-top: 0 !important;
+    margin-bottom: 100px;
+  }
+
+  .project-image,
+  .project-text {
+    width: 100%;
+  }
+}
   </style>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
@@ -818,156 +904,59 @@
       </div>
     </div>
   </section> -->
-  <section class="section background-black">
-    <div class="w-layout-blockcontainer base-container w-container">
-      <div class="projects-wrapper">
-        <div class="heading-project-wrapper">
-          <h2 data-w-id="383b4d84-fcd5-4f8e-b89b-872ff02cef49"
-            style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
-            class="heading-white-center">Touch modern concepts and designs with Steele</h2>
+  <section class="section background-black projects-overlap">
+    <div class="base-container">
+  
+      <h2 class="heading-white-center">
+        TOUCH MODERN CONCEPTS AND DESIGNS WITH STEELE
+      </h2>
+  
+      <!-- ROW 1 -->
+      <div class="project-row first">
+        <div class="project-image large">
+          <img src="images/project1.jpg" alt="">
         </div>
-        <div class="projects-wrapper-top">
-          <div class="projects-wrapper-left">
-            <div class="project-wrapper">
-              <div class="collection-project-wrapper w-dyn-list">
-                <div role="list" class="collection-project-list w-dyn-items">
-                  <div role="listitem" class="collection-project-item w-dyn-item">
-                    <div data-w-id="7f9d864e-6365-23b6-863f-80a1af9b4382" class="project-1"><a
-                        data-w-id="ff9a5494-1fd1-9288-a138-c86d0016f7c5" href="/projects/england-grand-mall"
-                        class="project-image-wrap-1 w-inline-block"><img
-                          src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66a0aaf711db5ba03b1c380a_Project1.jpg"
-                          loading="lazy"
-                          style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); width: 100%; height: 100%; transform-style: preserve-3d;"
-                          alt="Image" class="image-project"></a>
-                      <div
-                        style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
-                        class="content-project-wrap">
-                        <div class="project-text-wrap"><a href="/projects/england-grand-mall"
-                            class="project-heading">England Grand Mall</a>
-                          <p class="paragraph-project">Our renovation services breathe new life into spaces,
-                            transforming outdated structures into modern, functional, and visually stunning.</p>
-                        </div><a href="/projects/england-grand-mall" class="secondary-button w-button">See More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project-wrapper">
-              <div class="collection-project-wrapper w-dyn-list">
-                <div role="list" class="collection-project-list w-dyn-items">
-                  <div role="listitem" class="collection-project-item w-dyn-item">
-                    <div data-w-id="b169f4b2-3e2b-e5ca-6019-c83330012b12" class="project-2"><a
-                        data-w-id="1cbe486e-7906-8ec9-aa5e-3e61a493050d" href="/projects/cityview-office-tower"
-                        class="project-image-wrap-2 w-inline-block"><img
-                          src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66a0ab135139b022619de124_Project3.jpg"
-                          loading="lazy"
-                          style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); width: 100%; height: 100%; transform-style: preserve-3d;"
-                          alt="Image" class="image-project"></a>
-                      <div
-                        style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
-                        class="content-project-wrap-2">
-                        <div class="project-text-wrap"><a href="/projects/cityview-office-tower"
-                            class="project-heading">Cityview Office Tower</a>
-                          <p class="paragraph-project">Our innovative approach revitalized this office tower, enhancing
-                            its functionality and aesthetics while improving workspace efficiency and employee
-                            well-being.</p>
-                        </div><a href="/projects/cityview-office-tower" class="secondary-button w-button">See More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="project-wrapper-right">
-            <div class="project-wrapper">
-              <div class="collection-project-wrapper w-dyn-list">
-                <div role="list" class="collection-project-list w-dyn-items">
-                  <div role="listitem" class="collection-project-item w-dyn-item">
-                    <div data-w-id="051ea229-d916-f43e-ee71-e2dbd5838232" class="project-3"><a
-                        data-w-id="ded44606-aa34-bb28-93e0-30e13478ec93" href="/projects/lakeside-residences"
-                        class="project-image-wrap-3 w-inline-block"><img
-                          src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66a0ab0766fa9335a19a8a65_Project2.jpg"
-                          loading="lazy"
-                          style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); width: 100%; height: 100%; transform-style: preserve-3d;"
-                          alt="Image" class="image-project"></a>
-                      <div
-                        style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
-                        class="content-project-wrap-3">
-                        <div class="project-text-wrap"><a href="/projects/lakeside-residences"
-                            class="project-heading">Lakeside Residences</a>
-                          <p class="paragraph-project">We reimagined these lakeside homes, blending contemporary design
-                            with natural elements to create serene and elegant living spaces.</p>
-                        </div><a href="/projects/lakeside-residences" class="secondary-button w-button">See More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="projects-wrapper-bottom">
-          <div class="project-wrapper left">
-            <div class="collection-project-wrapper w-dyn-list">
-              <div role="list" class="collection-project-list w-dyn-items">
-                <div role="listitem" class="collection-project-item w-dyn-item">
-                  <div data-w-id="b169f4b2-3e2b-e5ca-6019-c83330012b24" class="project-4"><a
-                      data-w-id="954d9d3e-fde8-4581-9958-238145876b64" href="/projects/building-conversion"
-                      class="project-image-wrap-4 w-inline-block"><img
-                        src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66a0ab8aa830396f57f12991_Project5.jpg"
-                        loading="lazy"
-                        style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); width: 100%; height: 100%; transform-style: preserve-3d;"
-                        alt="Image" sizes="(max-width: 479px) 88vw, 220px"
-                        srcset="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66a0ab8aa830396f57f12991_Project5-p-500.jpg 500w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66a0ab8aa830396f57f12991_Project5.jpg 640w"
-                        class="image-project"></a>
-                    <div
-                      style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
-                      class="content-project-wrap">
-                      <div class="project-text-wrap"><a href="/projects/building-conversion"
-                          class="project-heading">Building Conversion</a>
-                        <p class="paragraph-project">Our team transformed a historic building into a contemporary
-                          mixed-use space, preserving its architectural charm while introducing modern amenities and
-                          functionality.</p>
-                      </div><a href="/projects/building-conversion" class="secondary-button w-button">See More</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="project-wrapper right">
-            <div class="collection-project-wrapper w-dyn-list">
-              <div role="list" class="collection-project-list w-dyn-items">
-                <div role="listitem" class="collection-project-item w-dyn-item">
-                  <div data-w-id="8ac2d690-1dff-fbae-1065-4b200814d8bc" class="project-5"><a
-                      data-w-id="f6aa8dba-9fef-1f91-9d15-ef50ff1a9bad" href="/projects/urban-park-revamp"
-                      class="project-image-wrap-5 w-inline-block"><img
-                        src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66a0ab80a06f17915906b85f_Project4.jpg"
-                        loading="lazy"
-                        style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); width: 100%; height: 100%; transform-style: preserve-3d;"
-                        alt="Image"
-                        sizes="(max-width: 479px) 92vw, (max-width: 767px) 370px, (max-width: 991px) 38vw, 370px"
-                        srcset="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66a0ab80a06f17915906b85f_Project4-p-500.jpg 500w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66a0ab80a06f17915906b85f_Project4.jpg 640w"
-                        class="image-project"></a>
-                    <div
-                      style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
-                      class="content-project-wrap-5">
-                      <div class="project-text-wrap"><a href="/projects/urban-park-revamp" class="project-heading">Urban
-                          Park Revamp</a>
-                        <p class="paragraph-project">We redesigned this urban park to incorporate sustainable
-                          landscaping and recreational areas, creating a vibrant community hub that fosters social
-                          interaction and relaxation.</p>
-                      </div><a href="/projects/urban-park-revamp" class="secondary-button w-button">See More</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  
+        <div class="project-text">
+          <h3>England Grand Mall</h3>
+          <p>
+            Our renovation services breathe new life into spaces,
+            transforming outdated structures into modern environments.
+          </p>
+          <a href="#" class="btn-outline">See More</a>
         </div>
       </div>
+  
+      <!-- ROW 2 -->
+      <div class="project-row second">
+        <div class="project-image small">
+          <img src="images/project2.jpg" alt="">
+        </div>
+  
+        <div class="project-text">
+          <h3>Cityview Office Tower</h3>
+          <p>
+            Innovative workspace transformation enhancing efficiency.
+          </p>
+          <a href="#" class="btn-outline">See More</a>
+        </div>
+      </div>
+  
+      <!-- ROW 3 -->
+      <div class="project-row third">
+        <div class="project-image medium">
+          <img src="images/project3.jpg" alt="">
+        </div>
+  
+        <div class="project-text">
+          <h3>Lakeside Residences</h3>
+          <p>
+            Contemporary homes blending natural elements.
+          </p>
+          <a href="#" class="btn-outline">See More</a>
+        </div>
+      </div>
+  
     </div>
   </section>
   <div class="section">
