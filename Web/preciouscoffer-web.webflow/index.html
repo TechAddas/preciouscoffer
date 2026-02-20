@@ -411,6 +411,58 @@
       
       }
       
+      .blog-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.blog-left {
+  width: 30%;
+}
+
+.blog-right {
+  width: 60%;
+}
+
+.blog-item {
+  margin-bottom: 70px;
+}
+
+.blog-meta {
+  font-size: 14px;
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+.blog-title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+  color: #111;
+  display: block;
+  transition: 0.3s ease;
+}
+
+.blog-title:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 991px) {
+  .blog-layout {
+    flex-direction: column;
+  }
+
+  .blog-left,
+  .blog-right {
+    width: 100%;
+  }
+
+  .blog-right {
+    margin-top: 60px;
+  }
+}
       </style>
   <script>
     const observer = new IntersectionObserver(entries => {
@@ -572,28 +624,28 @@
 <!-- Our Capabilities end -->
 
 <!-- counts start -->
-  <section class="section without-top-spacing">
-    <div class="w-layout-blockcontainer base-container w-container">
-      <div class="numbers-section">
-        <div data-w-id="335270ac-cab8-2a73-043e-1e384d413e17" style="opacity:0" class="number-wrap">
-          <p class="nuber">8</p>
-          <p class="paragraph-without-margin">Years</p>
-        </div>
-        <div data-w-id="b29a239d-c3fe-6e49-7411-4f67109ec343" style="opacity:0" class="number-wrap">
-          <p class="nuber">22</p>
-          <p class="paragraph-without-margin">Members</p>
-        </div>
-        <div data-w-id="2ee82f81-15eb-92be-5d03-a23941a67ba2" style="opacity:0" class="number-wrap">
-          <p class="nuber">72</p>
-          <p class="paragraph-without-margin">Projects</p>
-        </div>
-        <div data-w-id="dce66f0a-69c9-1116-6406-5f7f1a198800" style="opacity:0" class="number-wrap">
-          <p class="nuber">44</p>
-          <p class="paragraph-without-margin">Awards</p>
-        </div>
+<section class="section without-top-spacing">
+  <div class="w-layout-blockcontainer base-container w-container">
+    <div class="numbers-section">
+      <div data-w-id="335270ac-cab8-2a73-043e-1e384d413e17" style="opacity:0" class="number-wrap">
+        <p class="nuber">8</p>
+        <p class="paragraph-without-margin">Years</p>
+      </div>
+      <div data-w-id="b29a239d-c3fe-6e49-7411-4f67109ec343" style="opacity:0" class="number-wrap">
+        <p class="nuber">22</p>
+        <p class="paragraph-without-margin">Members</p>
+      </div>
+      <div data-w-id="2ee82f81-15eb-92be-5d03-a23941a67ba2" style="opacity:0" class="number-wrap">
+        <p class="nuber">72</p>
+        <p class="paragraph-without-margin">Projects</p>
+      </div>
+      <div data-w-id="dce66f0a-69c9-1116-6406-5f7f1a198800" style="opacity:0" class="number-wrap">
+        <p class="nuber">44</p>
+        <p class="paragraph-without-margin">Awards</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 <!-- counts end -->
 
 
@@ -966,53 +1018,41 @@
   <div class="w-layout-blockcontainer base-container w-container">
     <div class="blog-posts-content-wrapper">
 
-      <div class="heading-blog-wrapper">
-        <h2 class="heading-blog">Our Blog</h2>
-        <a href="blog.html" class="secondary-button w-button">
-          Read the Blog
-        </a>
-      </div>
+     
 
-      <div class="blog-wrap">
+      <div class="blog-layout">
 
-        <div class="collection-blog-item">
-          <div class="posts-wrapper">
-      
-            <div class="caption-blog-wrap">
-              <p class="blog-description">04 January</p>
-              <p class="blog-description">/</p>
-              <p class="blog-description">Tom Jhons</p>
-              <p class="blog-description">/</p>
-              <p class="blog-description">Renovation</p>
+        <!-- LEFT SIDE -->
+        <div class="blog-left">
+          <h2 class="heading-blog">OUR BLOG</h2>
+          <a href="#" class="secondary-button w-button">Read The Blog</a>
+        </div>
+  
+        <!-- RIGHT SIDE -->
+        <div class="blog-right">
+  
+          <div class="blog-item">
+            <div class="blog-meta">
+              04 January / Tom Jhons / Renovation
             </div>
-      
-            <a href="#" class="blog-paragraph">
+            <a href="#" class="blog-title">
               Discover emerging trends in urban planning that are shaping the cities of tomorrow
             </a>
-      
           </div>
-        </div>
-      
-        <div class="collection-blog-item">
-          <div class="posts-wrapper">
-      
-            <div class="caption-blog-wrap">
-              <p class="blog-description">25 July</p>
-              <p class="blog-description">/</p>
-              <p class="blog-description">July Mare</p>
-              <p class="blog-description">/</p>
-              <p class="blog-description">News</p>
+  
+          <div class="blog-item">
+            <div class="blog-meta">
+              25 July / July Mare / News
             </div>
-      
-            <a href="#" class="blog-paragraph">
+            <a href="#" class="blog-title">
               Uncover the latest renovation trends that can refresh and modernize your home, adding both value and comfort.
             </a>
-      
           </div>
+  
         </div>
-      
+  
       </div>
-
+  
     </div>
   </div>
 </section>
