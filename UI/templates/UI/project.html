@@ -1,0 +1,241 @@
+{% extends 'UI/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<div class="banner-inner-page">
+  <div class="base-container w-container">
+    <div class="heading-wrapper-aligh-bottom">
+      <div class="heading-inner-wrapper extra-width">
+        <h1>Our Projects</h1>
+      </div>
+      <div class="paragraph-banner-inner-wrapper">
+        <p class="paragraph-large text-white">Explore our diverse portfolio of completed projects, each reflecting our commitment to innovation, quality, and client satisfaction.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="base-container w-container">
+    <style>
+      .project-filter-bar {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        border: 1px solid #d7d7d7;
+        border-radius: 10px;
+        background: #fff;
+        overflow: hidden;
+        margin-bottom: 26px;
+        max-width: 900px;
+      }
+
+      .project-filter-link {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        border-bottom: 0;
+        border-right: 1px solid #e5e5e5;
+        border-left: 0;
+        border-top: 0;
+        color: #666;
+        background: #fff;
+        cursor: pointer;
+        font-size: 19px;
+        line-height: 1.2;
+        font-weight: 700;
+        text-align: center;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+
+      .project-filter-link:last-child {
+        border-right: 0;
+      }
+
+      .project-filter-link.active {
+        background: #f7f7f7;
+        color: #c50f1f;
+      }
+
+      .portfolio-grid-image {
+        object-fit: cover;
+      }
+
+      .project-location-wrap {
+        margin-top: 56px;
+      }
+
+      .project-location-map {
+        height: 380px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #d7d7d7;
+      }
+
+      @media (max-width: 991px) {
+        .project-filter-link {
+          font-size: 16px;
+          min-height: 44px;
+          padding: 10px 14px;
+        }
+
+        .project-location-map {
+          height: 300px;
+        }
+      }
+    </style>
+
+    <div class="project-filter-bar">
+      <button type="button" class="project-filter-link active" data-category="all">All</button>
+      {% for category in categories %}
+        <button
+          type="button"
+          class="project-filter-link"
+          data-category="{{ category.slug }}"
+        >{{ category.name }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="portfolio-grid-collection-list">
+      {% for project in projects %}
+        <div
+          class="portfolio-grid-collection-item"
+          data-project-card
+          data-categories="{% for category in project.categories.all %}{{ category.slug }}{% if not forloop.last %},{% endif %}{% endfor %}"
+          data-lat="{{ project.latitude|default:'' }}"
+          data-lng="{{ project.longitude|default:'' }}"
+          data-title="{{ project.title }}"
+          data-location="{{ project.location_name|default:'' }}"
+        >
+          <a href="{% url 'project-details' %}?id={{ project.id }}" class="portfolio-grid-image-link w-inline-block">
+            {% if project.listing_image %}
+              <img src="{{ project.listing_image.url }}" alt="{{ project.title }}" class="portfolio-grid-image">
+            {% elif project.main_image %}
+              <img src="{{ project.main_image.url }}" alt="{{ project.title }}" class="portfolio-grid-image">
+            {% else %}
+              <img src="{% static 'images/project1.jpg' %}" alt="{{ project.title }}" class="portfolio-grid-image">
+            {% endif %}
+
+            <div class="details-wrapper">
+              <div class="descriprion-project-wrapper">
+                <h3 class="name-project">{{ project.title }}</h3>
+                <p class="link-project-portfolio">View more</p>
+              </div>
+
+              <div class="custom-cursor">
+                <div class="cursor-text">View</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% empty %}
+        <div class="template-empty-state">
+          <div>No projects found for this category.</div>
+        </div>
+      {% endfor %}
+      <div class="template-empty-state" id="project-filter-empty" style="display:none;">
+        <div>No projects found for this category.</div>
+      </div>
+    </div>
+
+    <div class="project-location-wrap">
+      <div id="project-location-map" class="project-location-map"></div>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterButtons = document.querySelectorAll(".project-filter-link[data-category]");
+    const projectCards = document.querySelectorAll("[data-project-card]");
+    const emptyState = document.getElementById("project-filter-empty");
+    const mapContainer = document.getElementById("project-location-map");
+    let map = null;
+    let markerLayer = null;
+
+    if (!filterButtons.length || !projectCards.length) return;
+
+    function getVisibleLocations() {
+      const locations = [];
+      projectCards.forEach((card) => {
+        if (card.style.display === "none") return;
+        const lat = parseFloat(card.dataset.lat || "");
+        const lng = parseFloat(card.dataset.lng || "");
+        if (Number.isNaN(lat) || Number.isNaN(lng)) return;
+        locations.push({
+          lat: lat,
+          lng: lng,
+          title: card.dataset.title || "Project",
+          location: card.dataset.location || "",
+        });
+      });
+      return locations;
+    }
+
+    function renderMapAndList() {
+      if (!mapContainer || typeof L === "undefined") return;
+
+      const locations = getVisibleLocations();
+
+      if (!map) {
+        map = L.map(mapContainer).setView([20.5937, 78.9629], 4);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "&copy; OpenStreetMap contributors",
+        }).addTo(map);
+      }
+
+      if (markerLayer) {
+        markerLayer.clearLayers();
+      }
+      markerLayer = L.layerGroup().addTo(map);
+
+      const bounds = [];
+      locations.forEach((point) => {
+        const marker = L.marker([point.lat, point.lng]).addTo(markerLayer);
+        marker.bindPopup("<strong>" + point.title + "</strong><br>" + (point.location || (point.lat.toFixed(6) + ", " + point.lng.toFixed(6))));
+        bounds.push([point.lat, point.lng]);
+      });
+
+      if (bounds.length) {
+        map.fitBounds(bounds, { padding: [30, 30] });
+      } else {
+        map.setView([20.5937, 78.9629], 4);
+      }
+
+      setTimeout(() => map.invalidateSize(), 30);
+    }
+
+    function applyFilter(category) {
+      let visibleCount = 0;
+
+      projectCards.forEach((card) => {
+        const categories = (card.dataset.categories || "").split(",").filter(Boolean);
+        const isVisible = category === "all" || categories.includes(category);
+        card.style.display = isVisible ? "" : "none";
+        if (isVisible) visibleCount += 1;
+      });
+
+      if (emptyState) {
+        emptyState.style.display = visibleCount ? "none" : "";
+      }
+
+      renderMapAndList();
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        filterButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        applyFilter(button.dataset.category);
+      });
+    });
+
+    renderMapAndList();
+  });
+</script>
+{% endblock %}

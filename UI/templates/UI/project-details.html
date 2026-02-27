@@ -1,0 +1,777 @@
+{% extends 'UI/base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- <div data-animation="over-left" class="navbar-main w-nav" data-easing2="ease" data-easing="ease"
+    data-collapse="medium" data-w-id="7d832613-f8ea-64b6-094f-6e409bd038d2" role="banner" data-duration="400"
+    data-doc-height="1" style="will-change: background; background-color: rgb(0, 0, 0);">
+    <div class="nav-container w-container">
+      <div class="nav-menu-wrapper"><a href="/home-1" class="brand w-nav-brand"><img loading="lazy" height="Auto"
+            alt="Logo"
+            src="https://cdn.prod.website-files.com/669e48caa26579f4d596f32e/669f81f66a115cfdd3230ccb_Logo-White.svg"
+            class="logo-image"></a>
+        <nav role="navigation" class="nav-menu-dark w-nav-menu">
+          <div class="tablet-menu"><a href="/home-1" class="brand-tablet w-nav-brand"><img loading="lazy" height="Auto"
+                alt="Logo"
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f32e/669f81f640729938f13e77c0_Logo-Black.svg"
+                class="image-height"></a>
+            <div class="close-menu-button w-nav-button" style="-webkit-user-select: text;" aria-label="menu"
+              role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false"><img
+                width="Auto" height="18" alt="icon"
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f32e/669e48caa26579f4d596f5b1_close-btn.svg"
+                loading="lazy" class="nav-close-icon invert"></div>
+          </div>
+          <div class="menu-wrap">
+            <div data-delay="0" data-hover="true" class="nav-dropdown w-dropdown" style="max-width: 100%;">
+              <div class="nav-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-0"
+                aria-controls="w-dropdown-list-0" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+                <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
+                <p class="nav-item-title-black">Demos</p>
+              </div>
+              <nav class="nav-dropdown-list w-dropdown-list" id="w-dropdown-list-0"
+                aria-labelledby="w-dropdown-toggle-0">
+                <div class="nav-dropdown-link-wrapper"><a href="/home-1" class="nav-dropdown-link w-dropdown-link"
+                    tabindex="0"><span class="nav-dropdown-link-line"> </span>Home 1</a><a href="/home-2"
+                    class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                    </span>Home 2</a><a href="/home-3" class="nav-dropdown-link w-dropdown-link" tabindex="0"><span
+                      class="nav-dropdown-link-line"> </span>Home 3</a></div>
+              </nav>
+            </div>
+            <div data-delay="0" data-hover="true" class="nav-dropdown w-dropdown" style="max-width: 100%;">
+              <div class="nav-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-1"
+                aria-controls="w-dropdown-list-1" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+                <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
+                <p class="nav-item-title-black">About</p>
+              </div>
+              <nav class="nav-dropdown-list w-dropdown-list" id="w-dropdown-list-1"
+                aria-labelledby="w-dropdown-toggle-1">
+                <div class="nav-dropdown-link-wrapper"><a href="/about-us" class="nav-dropdown-link w-dropdown-link"
+                    tabindex="0"><span class="nav-dropdown-link-line"> </span>About Us</a><a href="/how-we-work"
+                    class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                    </span>How We Work</a><a href="/why-choose-us" class="nav-dropdown-link w-dropdown-link"
+                    tabindex="0"><span class="nav-dropdown-link-line"> </span>Why Choose Us</a><a href="/our-team"
+                    class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                    </span>Our Team</a><a href="/pricing" class="nav-dropdown-link w-dropdown-link" tabindex="0"><span
+                      class="nav-dropdown-link-line"> </span>Pricing</a><a href="/clients"
+                    class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                    </span>Clients</a><a href="/faq" class="nav-dropdown-link w-dropdown-link" tabindex="0"><span
+                      class="nav-dropdown-link-line"> </span>FAQ</a><a href="/testimonials"
+                    class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                    </span>Testimonials</a></div>
+              </nav>
+            </div><a href="/services" class="nav-link w-nav-link" style="max-width: 100%;">Services</a>
+            <div data-delay="0" data-hover="true" class="nav-dropdown w-dropdown" style="max-width: 100%;">
+              <div class="nav-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-2"
+                aria-controls="w-dropdown-list-2" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+                <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
+                <p class="nav-item-title-black">Projects</p>
+              </div>
+              <nav class="nav-dropdown-list w-dropdown-list" id="w-dropdown-list-2"
+                aria-labelledby="w-dropdown-toggle-2">
+                <div class="nav-dropdown-link-wrapper"><a href="/projects-1" class="nav-dropdown-link w-dropdown-link"
+                    tabindex="0"><span class="nav-dropdown-link-line"> </span>Projects 1</a><a href="/projects-2"
+                    class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                    </span>Projects 2</a><a href="/projects-3" class="nav-dropdown-link w-dropdown-link"
+                    tabindex="0"><span class="nav-dropdown-link-line"> </span>Projects 3</a><a
+                    href="https://steele-128.webflow.io/projects/sustainable-eco-housing"
+                    class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                    </span>Project Details</a></div>
+              </nav>
+            </div>
+            <div data-delay="0" data-hover="true" class="nav-dropdown w-dropdown" style="max-width: 100%;">
+              <div class="nav-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-3"
+                aria-controls="w-dropdown-list-3" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+                <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
+                <p class="nav-item-title-black">All Pages</p>
+              </div>
+              <nav class="nav-dropdown-list megamenu w-dropdown-list" id="w-dropdown-list-3"
+                aria-labelledby="w-dropdown-toggle-3">
+                <div class="nav-dropdown-column">
+                  <div class="nav-dropdown-link-wrapper"><a href="/home-1" class="nav-dropdown-link w-dropdown-link"
+                      tabindex="0"><span class="nav-dropdown-link-line"> </span>Home 1</a><a href="/home-2"
+                      class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                      </span>Home 2</a><a href="/home-3" class="nav-dropdown-link w-dropdown-link" tabindex="0"><span
+                        class="nav-dropdown-link-line"> </span>Home 3</a><a href="/about-us"
+                      class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                      </span>About Us</a><a href="/how-we-work" class="nav-dropdown-link w-dropdown-link"
+                      tabindex="0"><span class="nav-dropdown-link-line"> </span>How We Work</a><a href="/why-choose-us"
+                      class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                      </span>Why Choose Us</a></div>
+                </div>
+                <div class="nav-dropdown-column">
+                  <div class="nav-dropdown-link-wrapper"><a href="/our-team" class="nav-dropdown-link w-dropdown-link"
+                      tabindex="0"><span class="nav-dropdown-link-line"> </span>Our Team</a>
+                    <div class="collection-navbar-list-wrapper w-dyn-list">
+                      <div role="list" class="collection-navbar-list w-dyn-items">
+                        <div role="listitem" class="collection-navbar-item w-dyn-item"><a href="/team/john-anderson"
+                            class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                            </span>Team Details</a></div>
+                      </div>
+                    </div><a href="/pricing" class="nav-dropdown-link w-dropdown-link" tabindex="0"><span
+                        class="nav-dropdown-link-line"> </span>Pricing</a><a href="/clients"
+                      class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                      </span>Clients</a><a href="/faq" class="nav-dropdown-link w-dropdown-link" tabindex="0"><span
+                        class="nav-dropdown-link-line"> </span>FAQ</a><a href="/testimonials"
+                      class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                      </span>Testimonials</a>
+                  </div>
+                </div>
+                <div class="nav-dropdown-column">
+                  <div class="nav-dropdown-link-wrapper"><a href="/services" class="nav-dropdown-link w-dropdown-link"
+                      tabindex="0"><span class="nav-dropdown-link-line"> </span>Services</a>
+                    <div class="collection-navbar-list-wrapper w-dyn-list">
+                      <div role="list" class="collection-navbar-list w-dyn-items">
+                        <div role="listitem" class="collection-navbar-item w-dyn-item"><a
+                            href="/services/residential-design" class="nav-dropdown-link w-dropdown-link"
+                            tabindex="0"><span class="nav-dropdown-link-line"> </span>Service Details</a></div>
+                      </div>
+                    </div><a href="/contact-us" class="nav-dropdown-link w-dropdown-link" tabindex="0"><span
+                        class="nav-dropdown-link-line"> </span>Contact Us</a><a href="/projects-1"
+                      class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                      </span>Projects 1</a><a href="/projects-2" class="nav-dropdown-link w-dropdown-link"
+                      tabindex="0"><span class="nav-dropdown-link-line"> </span>Projects 2</a><a href="/projects-3"
+                      class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                      </span>Projects 3</a>
+                  </div>
+                </div>
+                <div class="nav-dropdown-column">
+                  <div class="nav-dropdown-link-wrapper">
+                    <div class="collection-navbar-list-wrapper w-dyn-list">
+                      <div role="list" class="collection-navbar-list w-dyn-items">
+                        <div role="listitem" class="collection-navbar-item w-dyn-item"><a
+                            href="/projects/sustainable-eco-housing" class="nav-dropdown-link w-dropdown-link"
+                            tabindex="0"><span class="nav-dropdown-link-line"> </span>Project Details</a></div>
+                      </div>
+                    </div><a href="/blog" class="nav-dropdown-link w-dropdown-link" tabindex="0"><span
+                        class="nav-dropdown-link-line"> </span>Blog</a>
+                    <div class="collection-navbar-list-wrapper w-dyn-list">
+                      <div role="list" class="collection-navbar-list w-dyn-items">
+                        <div role="listitem" class="collection-navbar-item w-dyn-item"><a
+                            href="/blog-posts/modern-residential-design" class="nav-dropdown-link w-dropdown-link"
+                            tabindex="0"><span class="nav-dropdown-link-line"> </span>Blog Details</a></div>
+                      </div>
+                    </div><a href="/shop" class="nav-dropdown-link w-dropdown-link" tabindex="0"><span
+                        class="nav-dropdown-link-line"> </span>Shop</a><a
+                      href="https://steele-128.webflow.io/product/unique-wall-posters"
+                      class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                      </span>Product Details</a><a href="/templates/style-guide"
+                      class="nav-dropdown-link w-dropdown-link" tabindex="0"><span class="nav-dropdown-link-line">
+                      </span>Style Guide</a>
+                  </div>
+                </div>
+              </nav>
+            </div><a href="/contact-us" class="primary-button tablet-menu-button w-button">Contact us</a>
+          </div>
+        </nav>
+        <div class="right-header-wrapper">
+          <div class="cart-wrapper">
+            <div data-open-product="" data-wf-cart-type="rightSidebar" data-wf-cart-query="query Dynamo3 {
+  database {
+    id
+    commerceOrder {
+      comment
+      extraItems {
+        name
+        pluginId
+        pluginName
+        price {
+          decimalValue
+          string
+          unit
+          value
+        }
+      }
+      id
+      startedOn
+      statusFlags {
+        hasDownloads
+        hasSubscription
+        isFreeOrder
+        requiresShipping
+      }
+      subtotal {
+        decimalValue
+        string
+        unit
+        value
+      }
+      total {
+        decimalValue
+        string
+        unit
+        value
+      }
+      updatedOn
+      userItems {
+        count
+        id
+        price {
+          value
+          unit
+          decimalValue
+          string
+        }
+        product {
+          id
+          cmsLocaleId
+          draft
+          archived
+          f_ec_product_type_2dr10dr: productType {
+            id
+            name
+          }
+          f_name_: name
+          f_sku_properties_3dr: skuProperties {
+            id
+            name
+            enum {
+              id
+              name
+              slug
+            }
+          }
+        }
+        rowTotal {
+          decimalValue
+          string
+          unit
+          value
+        }
+        sku {
+          cmsLocaleId
+          draft
+          archived
+          f_main_image_4dr: mainImage {
+            url
+            file {
+              size
+              origFileName
+              createdOn
+              updatedOn
+              mimeType
+              width
+              height
+              variants {
+                origFileName
+                quality
+                height
+                width
+                s3Url
+                error
+                size
+              }
+            }
+            alt
+          }
+          f_sku_values_3dr: skuValues {
+            property {
+              id
+            }
+            value {
+              id
+            }
+          }
+          id
+        }
+        subscriptionFrequency
+        subscriptionInterval
+        subscriptionTrial
+      }
+      userItemsCount
+    }
+  }
+  site {
+    commerce {
+      id
+      businessAddress {
+        country
+      }
+      defaultCountry
+      defaultCurrency
+      quickCheckoutEnabled
+    }
+  }
+}" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper cart" data-node-type="commerce-cart-wrapper">
+              <a class="w-commerce-commercecartopenlink cart-button-home-2 w-inline-block" role="button"
+                aria-haspopup="dialog" aria-label="Open empty cart" data-node-type="commerce-cart-open-link"
+                href="#"><svg class="w-commerce-commercecartopenlinkicon icon-cart" width="17px" height="17px"
+                  viewBox="0 0 17 17">
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <path
+                      d="M2.60592789,2 L0,2 L0,0 L4.39407211,0 L4.84288393,4 L16,4 L16,9.93844589 L3.76940945,12.3694378 L2.60592789,2 Z M15.5,17 C14.6715729,17 14,16.3284271 14,15.5 C14,14.6715729 14.6715729,14 15.5,14 C16.3284271,14 17,14.6715729 17,15.5 C17,16.3284271 16.3284271,17 15.5,17 Z M5.5,17 C4.67157288,17 4,16.3284271 4,15.5 C4,14.6715729 4.67157288,14 5.5,14 C6.32842712,14 7,14.6715729 7,15.5 C7,16.3284271 6.32842712,17 5.5,17 Z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+                <div class="cart-text w-inline-block">Cart</div>
+                <div class="quantity-wrapper">
+                  <p>(</p>
+                  <div
+                    data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22Number%22%2C%22filter%22%3A%7B%22type%22%3A%22numberPrecision%22%2C%22params%22%3A%5B%220%22%2C%22numberPrecision%22%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItemsCount%22%7D%7D%5D"
+                    class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
+                  <p>)</p>
+                </div>
+              </a>
+              <div style="display:none"
+                class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-rightSidebar"
+                data-node-type="commerce-cart-container-wrapper">
+                <div data-node-type="commerce-cart-container" role="dialog" class="w-commerce-commercecartcontainer">
+                  <div class="w-commerce-commercecartheader">
+                    <h4 class="w-commerce-commercecartheading">Your Cart</h4><a
+                      class="w-commerce-commercecartcloselink close-button w-inline-block" role="button"
+                      aria-label="Close cart" data-node-type="commerce-cart-close-link"><svg width="16px" height="16px"
+                        viewBox="0 0 16 16">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g fill-rule="nonzero" fill="#333333">
+                            <polygon
+                              points="6.23223305 8 0.616116524 13.6161165 2.38388348 15.3838835 8 9.76776695 13.6161165 15.3838835 15.3838835 13.6161165 9.76776695 8 15.3838835 2.38388348 13.6161165 0.616116524 8 6.23223305 2.38388348 0.616116524 0.616116524 2.38388348 6.23223305 8">
+                            </polygon>
+                          </g>
+                        </g>
+                      </svg></a>
+                  </div>
+                  <div class="w-commerce-commercecartformwrapper">
+                    <form style="display:none" class="w-commerce-commercecartform" data-node-type="commerce-cart-form">
+                      <script type="text/x-wf-template"
+                        id="wf-template-7d832613-f8ea-64b6-094f-6e409bd039cb">%3Cdiv%20class%3D%22w-commerce-commercecartitem%20cart-item%22%3E%3Cimg%20data-wf-bindings%3D%22%255B%257B%2522src%2522%253A%257B%2522type%2522%253A%2522ImageRef%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.f_main_image_4dr%2522%257D%257D%255D%22%20src%3D%22%22%20alt%3D%22%22%20class%3D%22w-commerce-commercecartitemimage%20image-cart%20w-dyn-bind-empty%22%2F%3E%3Cdiv%20class%3D%22w-commerce-commercecartiteminfo%20div-block-45%22%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_name_%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartproductname%20name-cart%20w-dyn-bind-empty%22%3E%3C%2Fdiv%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePrice%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522price%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.price%2522%257D%257D%255D%22%20class%3D%22price-cart%22%3E%24%C2%A00.00%C2%A0USD%3C%2Fdiv%3E%3Cscript%20type%3D%22text%2Fx-wf-template%22%20id%3D%22wf-template-7d832613-f8ea-64b6-094f-6e409bd039d1%22%3E%253Cli%253E%253Cspan%2520data-wf-bindings%253D%2522%25255B%25257B%252522innerHTML%252522%25253A%25257B%252522type%252522%25253A%252522PlainText%252522%25252C%252522filter%252522%25253A%25257B%252522type%252522%25253A%252522identity%252522%25252C%252522params%252522%25253A%25255B%25255D%25257D%25252C%252522dataPath%252522%25253A%252522database.commerceOrder.userItems%25255B%25255D.product.f_sku_properties_3dr%25255B%25255D.name%252522%25257D%25257D%25255D%2522%2520class%253D%2522w-dyn-bind-empty%2522%253E%253C%252Fspan%253E%253Cspan%253E%253A%2520%253C%252Fspan%253E%253Cspan%2520data-wf-bindings%253D%2522%25255B%25257B%252522innerHTML%252522%25253A%25257B%252522type%252522%25253A%252522CommercePropValues%252522%25252C%252522filter%252522%25253A%25257B%252522type%252522%25253A%252522identity%252522%25252C%252522params%252522%25253A%25255B%25255D%25257D%25252C%252522dataPath%252522%25253A%252522database.commerceOrder.userItems%25255B%25255D.product.f_sku_properties_3dr%25255B%25255D%252522%25257D%25257D%25255D%2522%2520class%253D%2522w-dyn-bind-empty%2522%253E%253C%252Fspan%253E%253C%252Fli%253E%3C%2Fscript%3E%3Cul%20data-wf-bindings%3D%22%255B%257B%2522optionSets%2522%253A%257B%2522type%2522%253A%2522CommercePropTable%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%5B%5D%2522%257D%257D%252C%257B%2522optionValues%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.f_sku_values_3dr%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartoptionlist%22%20data-wf-collection%3D%22database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%22%20data-wf-template-id%3D%22wf-template-7d832613-f8ea-64b6-094f-6e409bd039d1%22%3E%3Cli%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%255B%255D.name%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3Cspan%3E%3A%20%3C%2Fspan%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%255B%255D%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3C%2Fli%3E%3C%2Ful%3E%3Ca%20href%3D%22%23%22%20role%3D%22button%22%20data-wf-bindings%3D%22%255B%257B%2522data-commerce-sku-id%2522%253A%257B%2522type%2522%253A%2522ItemRef%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.id%2522%257D%257D%255D%22%20class%3D%22w-inline-block%22%20data-wf-cart-action%3D%22remove-item%22%20data-commerce-sku-id%3D%22%22%20aria-label%3D%22Remove%20item%20from%20cart%22%3E%3Cdiv%20class%3D%22remove-cart%22%3ERemove%3C%2Fdiv%3E%3C%2Fa%3E%3C%2Fdiv%3E%3Cinput%20aria-label%3D%22Update%20quantity%22%20data-wf-bindings%3D%22%255B%257B%2522value%2522%253A%257B%2522type%2522%253A%2522Number%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522numberPrecision%2522%252C%2522params%2522%253A%255B%25220%2522%252C%2522numberPrecision%2522%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.count%2522%257D%257D%252C%257B%2522data-commerce-sku-id%2522%253A%257B%2522type%2522%253A%2522ItemRef%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.id%2522%257D%257D%255D%22%20data-wf-conditions%3D%22%257B%2522condition%2522%253A%257B%2522fields%2522%253A%257B%2522product%253Aec-product-type%2522%253A%257B%2522ne%2522%253A%2522e348fd487d0102946c9179d2a94bb613%2522%252C%2522type%2522%253A%2522Option%2522%257D%257D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D%2522%257D%22%20class%3D%22w-commerce-commercecartquantity%20cart-quantity-inner%22%20required%3D%22%22%20pattern%3D%22%5E%5B0-9%5D%2B%24%22%20inputMode%3D%22numeric%22%20type%3D%22number%22%20name%3D%22quantity%22%20autoComplete%3D%22off%22%20data-wf-cart-action%3D%22update-item-quantity%22%20data-commerce-sku-id%3D%22%22%20value%3D%221%22%2F%3E%3C%2Fdiv%3E</script>
+                      <div class="w-commerce-commercecartlist" data-wf-collection="database.commerceOrder.userItems"
+                        data-wf-template-id="wf-template-7d832613-f8ea-64b6-094f-6e409bd039cb"></div>
+                      <div class="w-commerce-commercecartfooter">
+                        <div aria-live="polite" aria-atomic="true"
+                          class="w-commerce-commercecartlineitem cart-line-item">
+                          <div class="name-cart">Subtotal</div>
+                          <div
+                            data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22CommercePrice%22%2C%22filter%22%3A%7B%22type%22%3A%22price%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.subtotal%22%7D%7D%5D"
+                            class="w-commerce-commercecartordervalue price-cart-subtotal"></div>
+                        </div>
+                        <div>
+                          <div data-node-type="commerce-cart-quick-checkout-actions" style="display:none"><a
+                              role="button" aria-haspopup="dialog" aria-label="Apple Pay"
+                              data-node-type="commerce-cart-apple-pay-button"
+                              style="background-image:-webkit-named-image(apple-pay-logo-white);background-size:100% 50%;background-position:50% 50%;background-repeat:no-repeat"
+                              class="w-commerce-commercecartapplepaybutton apple-pay-button" tabindex="0">
+                              <div></div>
+                            </a><a role="button" tabindex="0" aria-haspopup="dialog"
+                              data-node-type="commerce-cart-quick-checkout-button" style="display:none"
+                              class="w-commerce-commercecartquickcheckoutbutton"><svg
+                                class="w-commerce-commercequickcheckoutgoogleicon" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+                                <defs>
+                                  <polygon id="google-mark-a" points="0 .329 3.494 .329 3.494 7.649 0 7.649"></polygon>
+                                  <polygon id="google-mark-c" points=".894 0 13.169 0 13.169 6.443 .894 6.443">
+                                  </polygon>
+                                </defs>
+                                <g fill="none" fill-rule="evenodd">
+                                  <path fill="#4285F4"
+                                    d="M10.5967,12.0469 L10.5967,14.0649 L13.1167,14.0649 C14.6047,12.6759 15.4577,10.6209 15.4577,8.1779 C15.4577,7.6339 15.4137,7.0889 15.3257,6.5559 L7.8887,6.5559 L7.8887,9.6329 L12.1507,9.6329 C11.9767,10.6119 11.4147,11.4899 10.5967,12.0469">
+                                  </path>
+                                  <path fill="#34A853"
+                                    d="M7.8887,16 C10.0137,16 11.8107,15.289 13.1147,14.067 C13.1147,14.066 13.1157,14.065 13.1167,14.064 L10.5967,12.047 C10.5877,12.053 10.5807,12.061 10.5727,12.067 C9.8607,12.556 8.9507,12.833 7.8887,12.833 C5.8577,12.833 4.1387,11.457 3.4937,9.605 L0.8747,9.605 L0.8747,11.648 C2.2197,14.319 4.9287,16 7.8887,16">
+                                  </path>
+                                  <g transform="translate(0 4)">
+                                    <mask id="google-mark-b" fill="#fff">
+                                      <use xlink:href="#google-mark-a"></use>
+                                    </mask>
+                                    <path fill="#FBBC04"
+                                      d="M3.4639,5.5337 C3.1369,4.5477 3.1359,3.4727 3.4609,2.4757 L3.4639,2.4777 C3.4679,2.4657 3.4749,2.4547 3.4789,2.4427 L3.4939,0.3287 L0.8939,0.3287 C0.8799,0.3577 0.8599,0.3827 0.8459,0.4117 C-0.2821,2.6667 -0.2821,5.3337 0.8459,7.5887 L0.8459,7.5997 C0.8549,7.6167 0.8659,7.6317 0.8749,7.6487 L3.4939,5.6057 C3.4849,5.5807 3.4729,5.5587 3.4639,5.5337"
+                                      mask="url(#google-mark-b)"></path>
+                                  </g>
+                                  <mask id="google-mark-d" fill="#fff">
+                                    <use xlink:href="#google-mark-c"></use>
+                                  </mask>
+                                  <path fill="#EA4335"
+                                    d="M0.894,4.3291 L3.478,6.4431 C4.113,4.5611 5.843,3.1671 7.889,3.1671 C9.018,3.1451 10.102,3.5781 10.912,4.3671 L13.169,2.0781 C11.733,0.7231 9.85,-0.0219 7.889,0.0001 C4.941,0.0001 2.245,1.6791 0.894,4.3291"
+                                    mask="url(#google-mark-d)"></path>
+                                </g>
+                              </svg><svg class="w-commerce-commercequickcheckoutmicrosofticon"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <g fill="none" fill-rule="evenodd">
+                                  <polygon fill="#F05022" points="7 7 1 7 1 1 7 1"></polygon>
+                                  <polygon fill="#7DB902" points="15 7 9 7 9 1 15 1"></polygon>
+                                  <polygon fill="#00A4EE" points="7 15 1 15 1 9 7 9"></polygon>
+                                  <polygon fill="#FFB700" points="15 15 9 15 9 9 15 9"></polygon>
+                                </g>
+                              </svg>
+                              <div>Pay with browser.</div>
+                            </a></div><a href="/checkout" value="Continue to Checkout"
+                            class="w-commerce-commercecartcheckoutbutton primary-button"
+                            data-loading-text="Hang Tight..." data-node-type="cart-checkout-button">Continue to
+                            Checkout</a>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="w-commerce-commercecartemptystate">
+                      <div aria-label="This cart is empty" aria-live="polite">No items found.</div>
+                    </div>
+                    <div aria-live="assertive" style="display:none" data-node-type="commerce-cart-error"
+                      class="w-commerce-commercecarterrorstate error-state-2">
+                      <div class="w-cart-error-msg"
+                        data-w-cart-quantity-error="Product is not available in this quantity."
+                        data-w-cart-general-error="Something went wrong when adding this item to the cart."
+                        data-w-cart-checkout-error="Checkout is disabled on this site."
+                        data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
+                        data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
+                        Product is not available in this quantity.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menu-button w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button"
+            tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false"><img loading="lazy"
+              height="16" alt="Icon"
+              src="https://cdn.prod.website-files.com/669e48caa26579f4d596f32e/66acdab7d851c1f0aad32fd7_burger-white.svg"
+              class="image-burger"></div><a href="/contact-us" class="primary-button hide-tablet w-button">Contact
+            Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
+  </div> -->
+  <div class="section inner-banner-contact-us-copy">
+    <div class="base-container w-container">
+      <div class="heading-project-detail-wrapper">
+        <div data-w-id="a19e20da-3dea-3999-9772-94265eb8dc22"
+          style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+          class="text-content-project-detail-banner"><a href="/projects-categories/commercial"
+            class="category-link-project-detail">Commercial</a>
+          <h1 class="heading-project-inner-banner">England Grand Mall</h1>
+        </div>
+        <div data-w-id="171e0487-b67f-b15a-b517-ab416131d30c"
+          style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+          class="image-wrapper-project-banner"><img
+            src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b7525828b4fd5accdfdd8c_Project1%20Main.jpg"
+            loading="lazy" data-w-id="7e3319bf-095f-bbd3-4640-cc7cc847d4f2" alt=""
+            sizes="(max-width: 479px) 94vw, (max-width: 767px) 96vw, (max-width: 1279px) 97vw, 1170px"
+            srcset="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b7525828b4fd5accdfdd8c_Project1%20Main-p-500.jpg 500w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b7525828b4fd5accdfdd8c_Project1%20Main-p-800.jpg 800w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b7525828b4fd5accdfdd8c_Project1%20Main-p-1080.jpg 1080w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b7525828b4fd5accdfdd8c_Project1%20Main-p-1600.jpg 1600w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b7525828b4fd5accdfdd8c_Project1%20Main.jpg 1920w"
+            class="image-portfolio"
+            style="will-change: transform; transform: translate3d(0px, 36.822px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+        </div>
+      </div>
+      <div class="detail-wrapper">
+        <div class="info-project-wrapper">
+          <div data-w-id="7ce88477-0f0c-2cff-95da-b95d448eab7e"
+            style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+            class="project-template-info-wrap">
+            <p class="paragraph-large text-white">Date</p>
+            <p class="paragraph-primary">October 10, 2024</p>
+          </div>
+          <div data-w-id="f858d339-a277-345d-7c6d-10f556c2982d"
+            style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+            class="project-template-info-wrap">
+            <p class="paragraph-large text-white">Location</p>
+            <p class="paragraph-primary">Chicago, IL</p>
+          </div>
+          <div data-w-id="6851b490-37c7-2598-2d34-372357790eae"
+            style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+            class="project-template-info-wrap">
+            <p class="paragraph-large text-white">Services</p>
+            <p class="paragraph-primary">Interior Design </p>
+          </div>
+          <div data-w-id="0b4c8b7a-7ab3-e906-c4df-1959e8f36bf2" class="project-template-social-icons"
+            style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+            <a href="https://www.facebook.com/" target="_blank" class="project-template-social-link"></a><a
+              href="https://www.instagram.com/" target="_blank" class="project-template-social-link"></a><a
+              href="https://twitter.com/" target="_blank" class="project-template-social-link last-child"></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="base-container w-container">
+      <div class="rich-text-template-wrapper">
+        <div data-w-id="d75b2bc0-d5cb-c25b-15fa-e543a0f61ed4"
+          style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+          class="rich-text-style w-richtext">
+          <h2>Understanding your unique vision and goals</h2>
+          <p>We start with a thorough consultation to understand your vision, goals, and specific requirements. This
+            phase includes an in-depth site assessment where we gather all the necessary information about your space,
+            including measurements, existing conditions, and potential challenges. Our goal is to fully comprehend your
+            needs so that we can tailor our approach to meet them effectively.</p>
+          <figure style="max-width:1279pxpx" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+            <div><img
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b622de1195d17542abec66_66b622db6b46282adadc2d71_Service%2520Image-2.jpeg"
+                loading="lazy" alt=""></div>
+          </figure>
+          <h3>Understanding your unique vision and goals</h3>
+          <p>We start with a thorough consultation to understand your vision, goals, and specific requirements. This
+            phase includes an in-depth site assessment where we gather all the necessary information about your space,
+            including measurements, existing conditions, and potential challenges. Our goal is to fully comprehend your
+            needs so that we can tailor our approach to meet them effectively.</p>
+          <blockquote>We start with a thorough consultation to understand your vision, goals, and specific requirements.
+            This phase includes an in-depth site assessment where we gather all the necessary information about your
+            space, including measurements, existing conditions, and potential challenges. Our goal is to fully
+            comprehend your needs so that we can tailor our approach to meet them effectively.</blockquote>
+          <h3>Understanding your unique vision and goals</h3>
+          <p>We start with a thorough consultation to understand your vision, goals, and specific requirements. This
+            phase includes an in-depth site assessment where we gather all the necessary information about your space,
+            including measurements, existing conditions, and potential challenges. Our goal is to fully comprehend your
+            needs so that we can tailor our approach to meet them effectively.</p>
+          <figure style="max-width:1280px" class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+            <div><img
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b625fe9fe9fa3420ff986d_66b623715dfbba6c909c614b_Service%2520Image.jpeg"
+                loading="lazy" alt=""></div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="section background-black">
+    <div class="w-layout-blockcontainer base-container w-container">
+      <div class="collection-list-gallery-wrapper w-dyn-list">
+        <script type="text/x-wf-template"
+          id="wf-template-68a37d51-982f-c549-60d4-2701cf7c90ac">%3Cdiv%20role%3D%22listitem%22%20class%3D%22collection-gallery-item%20w-dyn-item%20w-dyn-repeater-item%22%3E%3Ca%20href%3D%22%23%22%20id%3D%22w-node-e9127855-533c-b228-fcf2-e843d14b47b7-d596f3e5%22%20class%3D%22lightbox%20w-inline-block%20w-lightbox%22%3E%3Cimg%20src%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F669e48caa26579f4d596f345%2F66bb08c5f1012d546f4580ba_awards4.jpg%22%20loading%3D%22lazy%22%20style%3D%22-webkit-transform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(1%2C%201%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3B-moz-transform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(1%2C%201%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3B-ms-transform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(1%2C%201%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3Btransform%3Atranslate3d(0%2C%200%2C%200)%20scale3d(1%2C%201%2C%201)%20rotateX(0)%20rotateY(0)%20rotateZ(0)%20skew(0%2C%200)%3Bopacity%3A0%22%20data-w-id%3D%22e9127855-533c-b228-fcf2-e843d14b47b8%22%20alt%3D%22%22%20sizes%3D%22(max-width%3A%20479px)%2046vw%2C%20(max-width%3A%20767px)%2030vw%2C%20(max-width%3A%201279px)%2031vw%2C%20376.66668701171875px%22%20srcset%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F669e48caa26579f4d596f345%2F66bb08c5f1012d546f4580ba_awards4-p-500.jpg%20500w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F669e48caa26579f4d596f345%2F66bb08c5f1012d546f4580ba_awards4.jpg%20640w%22%20class%3D%22gallery-photo%22%2F%3E%3Cscript%20type%3D%22application%2Fjson%22%20class%3D%22w-json%22%3E%7B%0A%20%20%22items%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22url%22%3A%20%22https%3A%2F%2Fcdn.prod.website-files.com%2F669e48caa26579f4d596f345%2F66bb08c5f1012d546f4580ba_awards4.jpg%22%2C%0A%20%20%20%20%20%20%22type%22%3A%20%22image%22%0A%20%20%20%20%7D%0A%20%20%5D%2C%0A%20%20%22group%22%3A%20%22Gallery%22%0A%7D%3C%2Fscript%3E%3C%2Fa%3E%3C%2Fdiv%3E</script>
+        <div role="list" class="collection-gallery-list w-dyn-items">
+          <div role="listitem" class="collection-gallery-item w-dyn-item w-dyn-repeater-item"><a href="#"
+              id="w-node-e9127855-533c-b228-fcf2-e843d14b47b7-d596f3e5" class="lightbox w-inline-block w-lightbox"
+              aria-label="open lightbox" aria-haspopup="dialog"><img
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08c5f1012d546f4580ba_awards4.jpg"
+                loading="lazy"
+                style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;"
+                data-w-id="e9127855-533c-b228-fcf2-e843d14b47b8" alt=""
+                sizes="(max-width: 479px) 46vw, (max-width: 767px) 30vw, (max-width: 1279px) 31vw, 376.66668701171875px"
+                srcset="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08c5f1012d546f4580ba_awards4-p-500.jpg 500w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08c5f1012d546f4580ba_awards4.jpg 640w"
+                class="gallery-photo">
+              <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08c5f1012d546f4580ba_awards4.jpg",
+      "type": "image"
+    }
+  ],
+  "group": "Gallery"
+}</script>
+            </a></div>
+          <div role="listitem" class="collection-gallery-item w-dyn-item w-dyn-repeater-item"><a href="#"
+              id="w-node-e9127855-533c-b228-fcf2-e843d14b47b7-d596f3e5" class="lightbox w-inline-block w-lightbox"
+              aria-label="open lightbox" aria-haspopup="dialog"><img
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b61e9d97a70cb02ba26e1f_awards5.jpg"
+                loading="lazy"
+                style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;"
+                data-w-id="e9127855-533c-b228-fcf2-e843d14b47b8" alt=""
+                sizes="(max-width: 479px) 46vw, (max-width: 767px) 30vw, (max-width: 1279px) 31vw, 376.66668701171875px"
+                srcset="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b61e9d97a70cb02ba26e1f_awards5-p-500.jpg 500w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b61e9d97a70cb02ba26e1f_awards5.jpg 640w"
+                class="gallery-photo">
+              <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66b61e9d97a70cb02ba26e1f_awards5.jpg",
+      "type": "image"
+    }
+  ],
+  "group": "Gallery"
+}</script>
+            </a></div>
+          <div role="listitem" class="collection-gallery-item w-dyn-item w-dyn-repeater-item"><a href="#"
+              id="w-node-e9127855-533c-b228-fcf2-e843d14b47b7-d596f3e5" class="lightbox w-inline-block w-lightbox"
+              aria-label="open lightbox" aria-haspopup="dialog"><img
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08e15a3428e6259009bf_process%204.jpg"
+                loading="lazy"
+                style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;"
+                data-w-id="e9127855-533c-b228-fcf2-e843d14b47b8" alt=""
+                sizes="(max-width: 479px) 46vw, (max-width: 767px) 30vw, (max-width: 1279px) 31vw, 376.66668701171875px"
+                srcset="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08e15a3428e6259009bf_process%204-p-500.jpg 500w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08e15a3428e6259009bf_process%204.jpg 640w"
+                class="gallery-photo">
+              <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08e15a3428e6259009bf_process%204.jpg",
+      "type": "image"
+    }
+  ],
+  "group": "Gallery"
+}</script>
+            </a></div>
+          <div role="listitem" class="collection-gallery-item w-dyn-item w-dyn-repeater-item"><a href="#"
+              id="w-node-e9127855-533c-b228-fcf2-e843d14b47b7-d596f3e5" class="lightbox w-inline-block w-lightbox"
+              aria-label="open lightbox" aria-haspopup="dialog"><img
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08e994e75a5a3adcc375_process%203.jpg"
+                loading="lazy"
+                style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;"
+                data-w-id="e9127855-533c-b228-fcf2-e843d14b47b8" alt=""
+                sizes="(max-width: 479px) 46vw, (max-width: 767px) 30vw, (max-width: 1279px) 31vw, 376.66668701171875px"
+                srcset="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08e994e75a5a3adcc375_process%203-p-500.jpg 500w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08e994e75a5a3adcc375_process%203.jpg 640w"
+                class="gallery-photo">
+              <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb08e994e75a5a3adcc375_process%203.jpg",
+      "type": "image"
+    }
+  ],
+  "group": "Gallery"
+}</script>
+            </a></div>
+          <div role="listitem" class="collection-gallery-item w-dyn-item w-dyn-repeater-item"><a href="#"
+              id="w-node-e9127855-533c-b228-fcf2-e843d14b47b7-d596f3e5" class="lightbox w-inline-block w-lightbox"
+              aria-label="open lightbox" aria-haspopup="dialog"><img
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb12dcceebeadd44e8b7d2_process%202.jpg"
+                loading="lazy"
+                style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;"
+                data-w-id="e9127855-533c-b228-fcf2-e843d14b47b8" alt=""
+                sizes="(max-width: 479px) 46vw, (max-width: 767px) 30vw, (max-width: 1279px) 31vw, 376.66668701171875px"
+                srcset="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb12dcceebeadd44e8b7d2_process%202-p-500.jpg 500w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb12dcceebeadd44e8b7d2_process%202.jpg 640w"
+                class="gallery-photo">
+              <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb12dcceebeadd44e8b7d2_process%202.jpg",
+      "type": "image"
+    }
+  ],
+  "group": "Gallery"
+}</script>
+            </a></div>
+          <div role="listitem" class="collection-gallery-item w-dyn-item w-dyn-repeater-item"><a href="#"
+              id="w-node-e9127855-533c-b228-fcf2-e843d14b47b7-d596f3e5" class="lightbox w-inline-block w-lightbox"
+              aria-label="open lightbox" aria-haspopup="dialog"><img
+                src="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb12e3e1a826504eed882e_process%201.jpg"
+                loading="lazy"
+                style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;"
+                data-w-id="e9127855-533c-b228-fcf2-e843d14b47b8" alt=""
+                sizes="(max-width: 479px) 46vw, (max-width: 767px) 30vw, (max-width: 1279px) 31vw, 376.66668701171875px"
+                srcset="https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb12e3e1a826504eed882e_process%201-p-500.jpg 500w, https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb12e3e1a826504eed882e_process%201.jpg 640w"
+                class="gallery-photo">
+              <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://cdn.prod.website-files.com/669e48caa26579f4d596f345/66bb12e3e1a826504eed882e_process%201.jpg",
+      "type": "image"
+    }
+  ],
+  "group": "Gallery"
+}</script>
+            </a></div>
+        </div>
+        <div class="empty-state w-dyn-hide w-dyn-empty">
+          <div>No items found.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="w-layout-blockcontainer base-container w-container">
+      <h2 data-w-id="72a5c289-ddfb-e570-443b-39e0d6ff2bfc"
+        style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+        class="faq-title">the most common questions</h2>
+      <div class="accordion-wrapper">
+        <div data-w-id="72a5c289-ddfb-e570-443b-39e0d6ff2bff"
+          style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+          class="accordion-wrap">
+          <div data-delay="0" data-hover="false" data-w-id="72a5c289-ddfb-e570-443b-39e0d6ff2c00"
+            class="accordion-item top-item w-dropdown">
+            <div class="accordion-toggle w-dropdown-toggle" id="w-dropdown-toggle-4" aria-controls="w-dropdown-list-4"
+              aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+              <h6 style="color:rgb(0,0,0)" class="accordion-title">Can you work within my budget?</h6>
+              <div
+                style="color: rgb(0, 0, 0); transform-style: preserve-3d; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);"
+                class="accordion-icon"></div>
+            </div>
+            <nav style="height: 0px;" class="accordion-list w-dropdown-list" id="w-dropdown-list-4"
+              aria-labelledby="w-dropdown-toggle-4">
+              <p class="accordion-list-content">We understand the importance of budget constraints, and we work closely
+                with you to develop a plan that meets your financial requirements.</p>
+            </nav>
+          </div>
+          <div data-delay="0" data-hover="false" data-w-id="72a5c289-ddfb-e570-443b-39e0d6ff2c09"
+            class="accordion-item w-dropdown">
+            <div class="accordion-toggle w-dropdown-toggle" id="w-dropdown-toggle-5" aria-controls="w-dropdown-list-5"
+              aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+              <h6 style="color:rgb(0,0,0)" class="accordion-title">Do you handle new builds?</h6>
+              <div
+                style="color: rgb(0, 0, 0); transform-style: preserve-3d; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);"
+                class="accordion-icon"></div>
+            </div>
+            <nav style="height: 0px;" class="accordion-list w-dropdown-list" id="w-dropdown-list-5"
+              aria-labelledby="w-dropdown-toggle-5">
+              <p class="accordion-list-content">Whether you’re starting from scratch or looking to transform an existing
+                space, our team has the expertise to deliver outstanding results that align with your goals.</p>
+            </nav>
+          </div>
+          <div data-delay="0" data-hover="false" data-w-id="72a5c289-ddfb-e570-443b-39e0d6ff2c12"
+            class="accordion-item w-dropdown">
+            <div class="accordion-toggle w-dropdown-toggle" id="w-dropdown-toggle-6" aria-controls="w-dropdown-list-6"
+              aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+              <h6 style="color:rgb(0,0,0)" class="accordion-title">What sets your agency apart?</h6>
+              <div
+                style="color: rgb(0, 0, 0); transform-style: preserve-3d; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);"
+                class="accordion-icon"></div>
+            </div>
+            <nav style="height: 0px;" class="accordion-list w-dropdown-list" id="w-dropdown-list-6"
+              aria-labelledby="w-dropdown-toggle-6">
+              <p class="accordion-list-content">Our agency stands out for its innovative approach, meticulous attention
+                to detail, and unwavering commitment to client satisfaction.</p>
+            </nav>
+          </div>
+        </div>
+        <div data-w-id="72a5c289-ddfb-e570-443b-39e0d6ff2c1b"
+          style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+          class="accordion-wrap last-child">
+          <div data-delay="0" data-hover="false" data-w-id="72a5c289-ddfb-e570-443b-39e0d6ff2c1c"
+            class="accordion-item top-item-mob w-dropdown">
+            <div class="accordion-toggle w-dropdown-toggle" id="w-dropdown-toggle-7" aria-controls="w-dropdown-list-7"
+              aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+              <h6 style="color:rgb(0,0,0)" class="accordion-title">How long does a typical project take?</h6>
+              <div
+                style="color: rgb(0, 0, 0); transform-style: preserve-3d; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);"
+                class="accordion-icon"></div>
+            </div>
+            <nav style="height: 0px;" class="accordion-list w-dropdown-list" id="w-dropdown-list-7"
+              aria-labelledby="w-dropdown-toggle-7">
+              <p class="accordion-list-content">We work diligently to ensure that all phases of the project are
+                completed on time, without sacrificing the quality and attention to detail that we’re known for.</p>
+            </nav>
+          </div>
+          <div data-delay="0" data-hover="false" data-w-id="72a5c289-ddfb-e570-443b-39e0d6ff2c25"
+            class="accordion-item w-dropdown">
+            <div class="accordion-toggle w-dropdown-toggle" id="w-dropdown-toggle-8" aria-controls="w-dropdown-list-8"
+              aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+              <h6 style="color:rgb(0,0,0)" class="accordion-title">What services do you offer?</h6>
+              <div
+                style="color: rgb(0, 0, 0); transform-style: preserve-3d; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);"
+                class="accordion-icon"></div>
+            </div>
+            <nav style="height: 0px;" class="accordion-list w-dropdown-list" id="w-dropdown-list-8"
+              aria-labelledby="w-dropdown-toggle-8">
+              <p class="accordion-list-content">We provide a comprehensive range of services, including architectural
+                design, renovations, and project management for both residential and commercial spaces.</p>
+            </nav>
+          </div>
+          <div data-delay="0" data-hover="false" data-w-id="72a5c289-ddfb-e570-443b-39e0d6ff2c2e"
+            class="accordion-item w-dropdown">
+            <div class="accordion-toggle w-dropdown-toggle" id="w-dropdown-toggle-9" aria-controls="w-dropdown-list-9"
+              aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+              <h6 style="color:rgb(0,0,0)" class="accordion-title">How do I get started?</h6>
+              <div
+                style="color: rgb(0, 0, 0); transform-style: preserve-3d; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);"
+                class="accordion-icon"></div>
+            </div>
+            <nav style="height: 0px;" class="accordion-list w-dropdown-list" id="w-dropdown-list-9"
+              aria-labelledby="w-dropdown-toggle-9">
+              <p class="accordion-list-content">Simply reach out to us for an initial consultation, and we’ll walk you
+                through the process, from understanding your vision to developing a tailored plan.</p>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section without-space">
+    <div class="project-pagination-wrapper"><a data-w-id="f4f8b40a-dd31-23ff-b502-c3346a125471"
+        href="/projects/riverside-luxury-villas" class="project-button-link right w-inline-block">
+        <div
+          style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+          class="project-prev-button-link-icon"></div>
+        <div class="project-button-link-paragraph">Prev project</div>
+      </a>
+      <div class="project-pagination-icon-wrapper"></div><a data-w-id="0a4ba8c3-6d5d-09f6-d3db-96fd08aa7d2c"
+        href="/projects/lakeside-residences" class="project-button-link left w-inline-block">
+        <div class="project-button-link-paragraph">Next project</div>
+        <div
+          style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"
+          class="project-next-button-link-icon"></div>
+      </a>
+    </div>
+  </section>
+  <div class="footer">
+{% endblock %}

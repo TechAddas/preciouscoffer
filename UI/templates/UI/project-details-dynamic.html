@@ -1,0 +1,282 @@
+{% extends 'UI/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .pd-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .pd-gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    min-width: 0;
+  }
+
+  .pd-gallery-link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .pd-gallery-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.32s ease;
+  }
+
+  .pd-gallery-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 12px 14px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .pd-gallery-item:hover .pd-gallery-photo {
+    transform: scale(1.06);
+  }
+
+  .pd-gallery-item:hover .pd-gallery-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-map-wrap {
+    margin-top: 0;
+  }
+
+  .project-map-embed {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .project-map-embed iframe {
+    width: 100%;
+    min-height: 380px;
+    border: 0;
+  }
+
+  .project-banner-frame {
+    width: 1170px;
+    max-width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+  }
+
+  .project-banner-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .section.compact-section {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  @media (max-width: 991px) {
+    .pd-gallery-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .pd-gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+{% if project %}
+  <div class="section inner-banner-contact-us-copy">
+    <div class="base-container w-container">
+      <div class="heading-project-detail-wrapper">
+        <div class="text-content-project-detail-banner">
+          {% for category in project.categories.all|slice:":1" %}
+            <a href="#" class="category-link-project-detail">{{ category.name }}</a>
+          {% endfor %}
+          <h1 class="heading-project-inner-banner">{{ project.title }}</h1>
+        </div>
+        <div class="image-wrapper-project-banner">
+          {% if project.main_image %}
+            <img src="{{ project.main_image.url }}" loading="lazy" alt="{{ project.title }}" class="image-portfolio">
+          {% endif %}
+        </div>
+      </div>
+      <div class="detail-wrapper">
+        <div class="info-project-wrapper">
+          <div class="project-template-info-wrap">
+            <p class="paragraph-large text-white">Date</p>
+            <p class="paragraph-primary">
+              {% if project.project_date %}
+                {{ project.project_date|date:"F d, Y" }}
+              {% else %}
+                {{ project.created_at|date:"F d, Y" }}
+              {% endif %}
+            </p>
+          </div>
+          {% if project.location_postcode or project.location_city or project.location_name %}
+            <div class="project-template-info-wrap">
+              <p class="paragraph-large text-white">Location</p>
+              <p class="paragraph-primary">
+                {% if project.location_postcode %}
+                  {{ project.location_postcode }}
+                {% elif project.location_city %}
+                  {{ project.location_city }}
+                {% else %}
+                  {{ project.location_name|truncatechars:24 }}
+                {% endif %}
+              </p>
+            </div>
+          {% endif %}
+          <div class="project-template-info-wrap">
+            <p class="paragraph-large text-white">Services</p>
+            <p class="paragraph-primary">
+              {% for category in project.categories.all %}
+                {{ category.name }}{% if not forloop.last %}, {% endif %}
+              {% empty %}
+                -
+              {% endfor %}
+            </p>
+          </div>
+          <div class="project-template-social-icons">
+            <a href="https://www.facebook.com/" target="_blank" class="project-template-social-link"></a>
+            <a href="https://www.instagram.com/" target="_blank" class="project-template-social-link"></a>
+            <a href="https://twitter.com/" target="_blank" class="project-template-social-link last-child"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="base-container w-container">
+      <div class="rich-text-template-wrapper">
+        <div class="rich-text-style w-richtext">
+          <h2>The Vision</h2>
+          <p>{{ short_descriptions.0|default:""|linebreaksbr }}</p>
+
+          {% if project.banner_image_one %}
+            <figure class="project-banner-frame w-richtext-align-fullwidth w-richtext-figure-type-image">
+              <div><img src="{{ project.banner_image_one.url }}" loading="lazy" alt="{{ project.title }} banner 1"></div>
+            </figure>
+          {% endif %}
+
+          <h3>The BrieF</h3>
+          <p>{{ short_descriptions.1|default:""|linebreaksbr }}</p>
+          <h3>The Transformation</h3>
+          <blockquote>
+            {{ short_descriptions.2|default:""|linebreaksbr }}
+          </blockquote>
+
+          {% if project.banner_image_two %}
+            <figure class="project-banner-frame w-richtext-align-fullwidth w-richtext-figure-type-image">
+              <div><img src="{{ project.banner_image_two.url }}" loading="lazy" alt="{{ project.title }} banner 2"></div>
+            </figure>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if short_descriptions.3 %}
+    <div class="section compact-section">
+      <div class="base-container w-container">
+        <div class="rich-text-template-wrapper">
+          <div class="rich-text-style w-richtext">
+            <h3>The Outcome</h3>
+            <p>{{ short_descriptions.3|linebreaksbr }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if project.google_map_iframe or project.latitude and project.longitude %}
+    <div class="section compact-section">
+      <div class="base-container w-container">
+        <div class="project-map-wrap">
+          <h3 class="text-white" style="margin-bottom:16px;">Project Location</h3>
+          <div class="project-map-embed">
+            {% if project.google_map_iframe %}
+              {{ project.google_map_iframe|safe }}
+            {% else %}
+              <iframe
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q={{ project.latitude }},{{ project.longitude }}&z=15&output=embed"
+              ></iframe>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <section class="section background-black">
+    <div class="w-layout-blockcontainer base-container w-container">
+      <div class="collection-list-gallery-wrapper">
+        <div class="pd-gallery-grid">
+          {% for item in project.project_images.all %}
+            <div class="pd-gallery-item">
+              <a href="#" class="pd-gallery-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                <img
+                  src="{{ item.image.url }}"
+                  loading="lazy"
+                  alt="{{ project.title }} image {{ forloop.counter }}"
+                  class="pd-gallery-photo"
+                >
+                <script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "{{ item.image.url }}",
+      "type": "image"
+    }
+  ],
+  "group": "Project-{{ project.id }}-Gallery"
+}</script>
+              </a>
+              <div class="pd-gallery-label">
+                {% if item.category %}
+                  {{ item.category.name }}
+                {% else %}
+                  Gallery Image
+                {% endif %}
+              </div>
+            </div>
+          {% empty %}
+            <div class="paragraph-primary">No gallery images added yet.</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% else %}
+  <div class="section">
+    <div class="base-container w-container">
+      <h2>No project found</h2>
+      <p class="paragraph-primary">Add a project from admin and open this page with `?id=<project_id>`.</p>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}
