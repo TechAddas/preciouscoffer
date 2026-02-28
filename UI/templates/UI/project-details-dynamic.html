@@ -160,9 +160,10 @@
             </p>
           </div>
           <div class="project-template-social-icons">
-            <a href="https://www.facebook.com/" target="_blank" class="project-template-social-link"></a>
-            <a href="https://www.instagram.com/" target="_blank" class="project-template-social-link"></a>
-            <a href="https://twitter.com/" target="_blank" class="project-template-social-link last-child"></a>
+            <a href="{% if site_social_links and site_social_links.facebook_url %}{{ site_social_links.facebook_url }}{% else %}https://www.facebook.com/{% endif %}" target="_blank" class="project-template-social-link"></a>
+            <a href="{% if site_social_links and site_social_links.instagram_url %}{{ site_social_links.instagram_url }}{% else %}https://www.instagram.com/{% endif %}" target="_blank" class="project-template-social-link"></a>
+            <a href="{% if site_social_links and site_social_links.twitter_url %}{{ site_social_links.twitter_url }}{% else %}https://twitter.com/{% endif %}" target="_blank" class="project-template-social-link"></a>
+            <a href="{% if site_social_links and site_social_links.linkedin_url %}{{ site_social_links.linkedin_url }}{% else %}https://www.linkedin.com/{% endif %}" target="_blank" class="project-template-social-link last-child"></a>
           </div>
         </div>
       </div>

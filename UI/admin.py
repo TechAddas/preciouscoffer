@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from .models import Project, ProjectCategory, ProjectImage
+from .models import Project, ProjectCategory, ProjectImage, SiteSocialLinks
 
 
 class ProjectImageInline(admin.TabularInline):
@@ -185,3 +185,22 @@ class ProjectImageAdmin(admin.ModelAdmin):
         return "No image"
 
     thumbnail_preview.short_description = "Preview"
+
+
+@admin.register(SiteSocialLinks)
+class SiteSocialLinksAdmin(admin.ModelAdmin):
+    list_display = ("id", "instagram_url", "facebook_url", "twitter_url", "linkedin_url")
+    fieldsets = (
+        (
+            "Social Media Links",
+            {
+                "fields": ("instagram_url", "facebook_url", "twitter_url", "linkedin_url"),
+                "description": "Add full links used across the UI footer and social sections.",
+            },
+        ),
+    )
+
+    def has_add_permission(self, request):
+        if SiteSocialLinks.objects.exists():
+            return False
+        return super().has_add_permission(request)

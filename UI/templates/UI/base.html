@@ -11,6 +11,53 @@
   <link href="{% static 'css/normalize.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'css/webflow.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'css/preciouscoffer-web.webflow.css' %}" rel="stylesheet" type="text/css">
+  <style>
+    .team-slide-item {
+      gap: 0 !important;
+      align-items: stretch !important;
+    }
+
+    .team-link.w-inline-block {
+      position: relative !important;
+      overflow: hidden !important;
+      border-radius: 16px !important;
+      display: block !important;
+      margin: 10px 10px !important;
+    }
+
+    .team-link .image-height {
+      width: 100% !important;
+      height: 100% !important;
+      display: block !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+    }
+
+    .team-link .overlay {
+      padding: 20px 14px !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+
+    .team-link .team-name,
+    .team-link .team-position {
+      text-align: center !important;
+      width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    @media screen and (max-width: 767px) {
+      .team-slide-item {
+        gap: 0 !important;
+      }
+
+      .team-link.w-inline-block {
+        margin: 6px !important;
+      }
+    }
+  </style>
   <!-- <style>
     .services-image-wrap {
       opacity: 0;
@@ -532,59 +579,29 @@
     <div class="base-container w-container">
       <div class="footer-links-wrap">
         <div data-w-id="6de23c29-1c30-946e-75e0-a5372ab8287a" class="links-wrap-footer">
-          <a href="https://www.instagram.com/" target="_blank" class="link-with-icon">Instagram<span
+          <a href="{% if site_social_links and site_social_links.instagram_url %}{{ site_social_links.instagram_url }}{% else %}https://www.instagram.com/{% endif %}" target="_blank" class="link-with-icon">Instagram<span
               class="text-button-icon"></span></a>
-          <a href="https://www.linkedin.com/" target="_blank" class="link-with-icon">LinkedIn<span
+          <a href="{% if site_social_links and site_social_links.facebook_url %}{{ site_social_links.facebook_url }}{% else %}https://www.facebook.com/{% endif %}" target="_blank" class="link-with-icon">Facebook<span
               class="text-button-icon"></span></a>
-        </div>
-        <div data-w-id="1c401f54-f604-ff5d-a4a6-9f6247bfa966" class="input-wrapper">
-          <div class="form-block-footer w-form">
-            <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form-footer-copy"
-              data-wf-page-id="698fb87304c94142e89f6592" data-wf-element-id="a1ab355c-1fc4-c6ef-3568-e9b99e1051bc">
-              <input class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Email"
-                type="email" id="email" required=""><input type="submit" data-wait="Please wait..."
-                class="primary-button w-button" value="Subscribe Newsletter">
-            </form>
-            <div class="success-message w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="error-message w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
-          </div>
+          <a href="{% if site_social_links and site_social_links.twitter_url %}{{ site_social_links.twitter_url }}{% else %}https://twitter.com/{% endif %}" target="_blank" class="link-with-icon">Twitter<span
+              class="text-button-icon"></span></a>
+          <a href="{% if site_social_links and site_social_links.linkedin_url %}{{ site_social_links.linkedin_url }}{% else %}https://www.linkedin.com/{% endif %}" target="_blank" class="link-with-icon">LinkedIn<span
+              class="text-button-icon"></span></a>
         </div>
       </div>
       <div class="footer-wrapper">
         <div data-w-id="daf981fd-9b17-a0fb-7466-2c35634f2c76" class="footer-address-wrapper">
-          <h5 class="footer-heading">Bahrain</h5>
-          <p class="footer-address">PO. Box 2749 Off 303, 3rd No.Flr.R, Manama</p>
-        </div>
-        <div data-w-id="ba693e51-668d-284b-483c-7227f126074f" class="footer-address-wrapper">
-          <h5 class="footer-heading">Iceland</h5>
-          <p class="footer-address">Skólastígur 24, Djúpivogur</p>
-        </div>
-        <div id="w-node-ecfcb396-8c2a-ab4d-ebbd-8bc5946e8f57-634f2c73" data-w-id="ecfcb396-8c2a-ab4d-ebbd-8bc5946e8f57"
-          class="footer-address-wrapper">
-          <h5 class="footer-heading">Saudi Arabia</h5>
-          <p class="footer-address">Imam Bukhari, Aziziyah Dist, Al Madinah</p>
-        </div>
-        <div data-w-id="b57bc6f3-cd4a-8568-12a6-b21a1b14ae3b" class="footer-address-wrapper">
-          <h5 class="footer-heading">Curaçao</h5>
-          <p class="footer-address">Piscadera Bay z/n, Willemstad</p>
+          <h5 class="footer-heading">United Kingdom</h5>
+          <p class="footer-address">40 Kingston Road, Southall, United Kingdom, UB2 4AP</p>
         </div>
       </div>
       <div data-w-id="daf981fd-9b17-a0fb-7466-2c35634f2ca5" class="footer-bottom-wrapper">
-        <div class="footer-copyright">© Steele128. All rights reserved. <a href="templates/licensing.html"
-            class="footer-licensing-link">Licensing</a>
+        <div class="footer-copyright">© Precious Coffer. All rights reserved. <span
+            class="footer-licensing-link">Precious Coffer</span>
         </div>
         <div class="footer-rights-wrapper">
           <div class="footer-rights">
-            <a href="https://www.128.digital/webflow-templates" target="_blank" class="footer-copyright-link">Webflow
-              Templates</a>by <a href="https://www.128.digital/" target="_blank"
-              class="footer-copyright-link">128.digital. </a>
-          </div>
-          <div class="footer-rights">Powered by <a href="https://webflow.com/" target="_blank"
-              class="footer-copyright-link">Webflow</a>
+            Created by <a href="https://techaddas.co.uk" target="_blank" class="footer-copyright-link">Techaddas</a>
           </div>
         </div>
       </div>

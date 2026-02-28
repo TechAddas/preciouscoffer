@@ -152,3 +152,17 @@ class ProjectImage(models.Model):
                 processed.save(file_field.path, format=save_format, **save_kwargs)
         except OSError:
             return
+
+
+class SiteSocialLinks(models.Model):
+    instagram_url = models.URLField(blank=True)
+    linkedin_url = models.URLField(blank=True)
+    facebook_url = models.URLField(blank=True)
+    twitter_url = models.URLField(blank=True)
+
+    class Meta:
+        verbose_name = "Site Social Links"
+        verbose_name_plural = "Site Social Links"
+
+    def __str__(self):
+        return "Site Social Links"

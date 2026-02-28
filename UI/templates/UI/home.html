@@ -2,6 +2,125 @@
 {% load static %}
 
 {% block content %}
+<style>
+  .review-slider-section {
+    background: linear-gradient(180deg, #f8f5ef 0%, #ffffff 100%);
+  }
+
+  .review-slider-section .base-container {
+    background: #fff;
+    border: 1px solid #ece6dc;
+    border-radius: 14px;
+    padding: 28px 26px;
+  }
+
+  .review-slider-section .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+
+  .review-slider-section .review-title {
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.05;
+    color: #1f1f1f;
+  }
+
+  .review-pager {
+    display: flex;
+    gap: 8px;
+  }
+
+  .review-page-btn {
+    border: 1px solid #ddd2c0;
+    background: #fff;
+    color: #5b4f3c;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .review-page-btn.current {
+    border-color: #c88b2b;
+    color: #c88b2b;
+    font-weight: 700;
+  }
+
+  .review-page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .review-stack-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .review-slide {
+    background: linear-gradient(180deg, #fffdf9 0%, #fff 100%);
+    border: 1px solid #efe7da;
+    border-radius: 10px;
+    padding: 20px 22px;
+    box-shadow: 0 10px 28px rgba(24, 17, 8, 0.06);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .review-slide:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(24, 17, 8, 0.1);
+  }
+
+  .review-slide .blog-meta {
+    margin-bottom: 8px;
+    font-size: 11px;
+    color: #7f7f7f;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .review-slide .blog-title {
+    font-size: 18px;
+    line-height: 1.45;
+    color: #2b2b2b;
+    margin: 0;
+  }
+
+  .tight-after-testimonials {
+    padding-bottom: 20px !important;
+  }
+
+  .team-tight-top {
+    padding-top: 24px !important;
+  }
+
+  @media (max-width: 991px) {
+    .review-slider-section .base-container {
+      padding: 20px 18px;
+    }
+
+    .review-slider-section .review-title {
+      font-size: 30px;
+    }
+
+    .review-stack-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .team-link .image-height {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+</style>
   <!-- banne start -->
   <div class="home-banner-section">
     <div data-delay="3000" data-animation="slide" class="home-banner-slider w-slider" data-autoplay="false"
@@ -14,7 +133,7 @@
             <div class="home-banner-content">
               <div class="heading-home-banner-wrap">
                 <h1 class="home-banner-heading">Sustainable Eco Housing</h1>
-                <a href="#" class="primary-button w-button">View Project</a>
+                <a href="{% url 'project' %}" class="primary-button w-button">View Project</a>
               </div>
             </div>
           </div>
@@ -27,7 +146,7 @@
             <div class="home-banner-content">
               <div class="heading-home-banner-wrap">
                 <h1 class="home-banner-heading">Sustainable Eco Housing</h1>
-                <a href="#" class="primary-button w-button">View Project</a>
+                <a href="{% url 'project' %}" class="primary-button w-button">View Project</a>
               </div>
             </div>
           </div>
@@ -40,7 +159,7 @@
             <div class="home-banner-content">
               <div class="heading-home-banner-wrap">
                 <h1 class="home-banner-heading">Sustainable Eco Housing</h1>
-                <a href="#" class="primary-button w-button">View Project</a>
+                <a href="{% url 'project' %}" class="primary-button w-button">View Project</a>
               </div>
             </div>
           </div>
@@ -64,7 +183,7 @@
         <p data-w-id="1269e2bd-a8cb-8e2c-e38c-5e664439cc04" style="opacity:0" class="heading-paragraph-big">We excel in
           delivering innovative architectural solutions that blend aesthetics and functionality. Our team of experts
           ensures every project meets the highest standards</p>
-        <a data-w-id="0c2a8903-703c-1611-6786-8bac228a2a90" href="{% url 'about-us' %}" class="secondary-button w-button">Learn
+        <a data-w-id="0c2a8903-703c-1611-6786-8bac228a2a90" href="{% url 'project' %}" class="secondary-button w-button">Learn
           More</a>
       </div>
     </div>
@@ -110,20 +229,20 @@
   <div class="w-layout-blockcontainer base-container w-container">
     <div class="numbers-section">
       <div data-w-id="335270ac-cab8-2a73-043e-1e384d413e17" style="opacity:0" class="number-wrap">
-        <p class="nuber">8</p>
-        <p class="paragraph-without-margin">Years</p>
+        <p class="nuber">{{ projects_count }}</p>
+        <p class="paragraph-without-margin">Project</p>
       </div>
       <div data-w-id="b29a239d-c3fe-6e49-7411-4f67109ec343" style="opacity:0" class="number-wrap">
-        <p class="nuber">22</p>
-        <p class="paragraph-without-margin">Members</p>
+        <p class="nuber">{{ reviews_count }}</p>
+        <p class="paragraph-without-margin">Reviews</p>
       </div>
       <div data-w-id="2ee82f81-15eb-92be-5d03-a23941a67ba2" style="opacity:0" class="number-wrap">
-        <p class="nuber">72</p>
-        <p class="paragraph-without-margin">Projects</p>
+        <p class="nuber">{{ testimonials_count }}</p>
+        <p class="paragraph-without-margin">Testimonials</p>
       </div>
       <div data-w-id="dce66f0a-69c9-1116-6406-5f7f1a198800" style="opacity:0" class="number-wrap">
-        <p class="nuber">44</p>
-        <p class="paragraph-without-margin">Awards</p>
+        <p class="nuber">{{ images_count }}</p>
+        <p class="paragraph-without-margin">Images</p>
       </div>
     </div>
   </div>
@@ -136,12 +255,12 @@
   <section class="section">
     <div class="w-layout-blockcontainer base-container w-container">
       <div class="heading-services-wrapper">
-        <h2 data-w-id="eee645c8-e7bb-8727-d90a-6170323ea42d" style="opacity:0" class="capitalize">Services</h2>
+        <a data-w-id="eee645c8-e7bb-8727-d90a-6170323ea42d" style="opacity:0" href="{% url 'project' %}" class="capitalize" style="text-decoration:none;">Services</a>
         <div class="text-services-wrapper">
           <p data-w-id="c1347a19-66f5-b119-83e7-a0177488ebed" class="paragraph-big-without-margin">We offer a
             comprehensive range of architectural services tailored to meet your unique needs. Our expertise spans from
             initial concept design to final project completion</p>
-          <a data-w-id="289a9ac5-78fb-f228-f8ca-fc2d6be82e31" href="services.html" class="primary-button w-button">See
+          <a data-w-id="289a9ac5-78fb-f228-f8ca-fc2d6be82e31" href="{% url 'project' %}" class="primary-button w-button">See
             All Services</a>
         </div>
       </div>
@@ -160,7 +279,7 @@
           <div class="services-content-wrap">
 
             <div class="text-services">
-              <a href="/services/residential-design" class="services-title">
+              <a href="{% url 'project' %}" class="services-title">
                 Residential Design
               </a>
 
@@ -169,7 +288,7 @@
                   Our renovation services breathe new life into spaces, transforming outdated structures into visually
                   stunning environments.
                 </p>
-                <a href="/services/residential-design" class="secondary-button w-button">
+                <a href="{% url 'project' %}" class="secondary-button w-button">
                   Learn More
                 </a>
               </div>
@@ -188,7 +307,7 @@
           <div class="services-content-wrap">
 
             <div class="text-services">
-              <a href="/services/renovations" class="services-title">
+              <a href="{% url 'project' %}" class="services-title">
                 Renovations
               </a>
 
@@ -196,7 +315,7 @@
                 <p>
                   Our team transforms existing structures, bringing new life and functionality to your spaces.
                 </p>
-                <a href="/services/renovations" class="secondary-button w-button">
+                <a href="{% url 'project' %}" class="secondary-button w-button">
                   Learn More
                 </a>
               </div>
@@ -215,7 +334,7 @@
           <div class="services-content-wrap">
 
             <div class="text-services">
-              <a href="/services/commercial-design" class="services-title">
+              <a href="{% url 'project' %}" class="services-title">
                 Commercial Design
               </a>
 
@@ -223,7 +342,7 @@
                 <p>
                   We design innovative commercial spaces that support your business goals and inspire your clients.
                 </p>
-                <a href="/services/commercial-design" class="secondary-button w-button">
+                <a href="{% url 'project' %}" class="secondary-button w-button">
                   Learn More
                 </a>
               </div>
@@ -264,13 +383,13 @@
             <!-- PROJECT 1 -->
             <div class="project-wrapper">
               <div class="project-1">
-                <a href="{{ project_detail_urls.0 }}" class="project-image-wrap-1 w-inline-block">
+                <a href="{% url 'project' %}" class="project-image-wrap-1 w-inline-block">
                   <img src="{% static 'images/project1.jpg' %}" alt="England Grand Mall" class="image-project">
                 </a>
       
                 <div class="content-project-wrap">
                   <div class="project-text-wrap">
-                    <a href="{{ project_detail_urls.0 }}" class="project-heading">
+                    <a href="{% url 'project' %}" class="project-heading">
                       England Grand Mall
                     </a>
                     <p class="paragraph-project">
@@ -278,7 +397,7 @@
                       transforming outdated structures into modern environments.
                     </p>
                   </div>
-                  <a href="{{ project_detail_urls.0 }}" class="secondary-button w-button">
+                  <a href="{% url 'project' %}" class="secondary-button w-button">
                     See More
                   </a>
                 </div>
@@ -288,20 +407,20 @@
             <!-- PROJECT 2 -->
             <div class="project-wrapper">
               <div class="project-2">
-                <a href="{{ project_detail_urls.1 }}" class="project-image-wrap-2 w-inline-block">
+                <a href="{% url 'project' %}" class="project-image-wrap-2 w-inline-block">
                   <img src="{% static 'images/project2.jpg' %}" alt="Cityview Office Tower" class="image-project">
                 </a>
       
                 <div class="content-project-wrap-2">
                   <div class="project-text-wrap">
-                    <a href="{{ project_detail_urls.1 }}" class="project-heading">
+                    <a href="{% url 'project' %}" class="project-heading">
                       Cityview Office Tower
                     </a>
                     <p class="paragraph-project">
                       Innovative workspace transformation enhancing efficiency and aesthetics.
                     </p>
                   </div>
-                  <a href="{{ project_detail_urls.1 }}" class="secondary-button w-button">
+                  <a href="{% url 'project' %}" class="secondary-button w-button">
                     See More
                   </a>
                 </div>
@@ -316,20 +435,20 @@
             <!-- PROJECT 3 -->
             <div class="project-wrapper">
               <div class="project-3">
-                <a href="{{ project_detail_urls.2 }}" class="project-image-wrap-3 w-inline-block">
+                <a href="{% url 'project' %}" class="project-image-wrap-3 w-inline-block">
                   <img src="{% static 'images/project3.jpg' %}" alt="Lakeside Residences" class="image-project">
                 </a>
       
                 <div class="content-project-wrap-3">
                   <div class="project-text-wrap">
-                    <a href="{{ project_detail_urls.2 }}" class="project-heading">
+                    <a href="{% url 'project' %}" class="project-heading">
                       Lakeside Residences
                     </a>
                     <p class="paragraph-project">
                       Contemporary homes blending natural elements to create elegant living spaces.
                     </p>
                   </div>
-                  <a href="{{ project_detail_urls.2 }}" class="secondary-button w-button">
+                  <a href="{% url 'project' %}" class="secondary-button w-button">
                     See More
                   </a>
                 </div>
@@ -346,20 +465,20 @@
           <!-- PROJECT 4 -->
           <div class="project-wrapper left">
             <div class="project-4">
-              <a href="{{ project_detail_urls.3 }}" class="project-image-wrap-4 w-inline-block">
+              <a href="{% url 'project' %}" class="project-image-wrap-4 w-inline-block">
                 <img src="{% static 'images/project4.jpg' %}" alt="Building Conversion" class="image-project">
               </a>
       
               <div class="content-project-wrap">
                 <div class="project-text-wrap">
-                  <a href="{{ project_detail_urls.3 }}" class="project-heading">
+                  <a href="{% url 'project' %}" class="project-heading">
                     Building Conversion
                   </a>
                   <p class="paragraph-project">
                     Historic building transformed into a contemporary mixed-use space.
                   </p>
                 </div>
-                <a href="{{ project_detail_urls.3 }}" class="secondary-button w-button">
+                <a href="{% url 'project' %}" class="secondary-button w-button">
                   See More
                 </a>
               </div>
@@ -369,20 +488,20 @@
           <!-- PROJECT 5 -->
           <div class="project-wrapper right">
             <div class="project-5">
-              <a href="{{ project_detail_urls.4 }}" class="project-image-wrap-5 w-inline-block">
+              <a href="{% url 'project' %}" class="project-image-wrap-5 w-inline-block">
                 <img src="{% static 'images/project5.jpg' %}" alt="Urban Park Revamp" class="image-project">
               </a>
       
               <div class="content-project-wrap-5">
                 <div class="project-text-wrap">
-                  <a href="{{ project_detail_urls.4 }}" class="project-heading">
+                  <a href="{% url 'project' %}" class="project-heading">
                     Urban Park Revamp
                   </a>
                   <p class="paragraph-project">
                     Redesigned urban landscape fostering social interaction and sustainability.
                   </p>
                 </div>
-                <a href="{{ project_detail_urls.4 }}" class="secondary-button w-button">
+                <a href="{% url 'project' %}" class="secondary-button w-button">
                   See More
                 </a>
               </div>
@@ -397,8 +516,41 @@
  
  <!-- project end -->
   
+<!-- testimonials start -->
+<section class="section without-top-spacing review-slider-section tight-after-testimonials">
+  <div class="w-layout-blockcontainer base-container w-container">
+    <div class="review-header">
+      <h2 class="review-title">TESTIMONIALS</h2>
+      <div class="review-pager" data-review-pager="testimonials"></div>
+    </div>
+    <div class="review-stack-list" data-review-list="testimonials">
+        <article class="review-slide" data-review-item>
+          <div class="blog-meta">Refurbishment / London</div>
+          <p class="blog-title">
+            “Excellent execution and clear communication from start to finish. The final result exceeded our expectations.”
+          </p>
+        </article>
+
+        <article class="review-slide" data-review-item>
+          <div class="blog-meta">Extension / Surrey</div>
+          <p class="blog-title">
+            “The team translated our ideas into a practical, elegant space. Timelines were managed professionally.”
+          </p>
+        </article>
+
+        <article class="review-slide" data-review-item>
+          <div class="blog-meta">Outbuilding / Kent</div>
+          <p class="blog-title">
+            “Quality of workmanship was outstanding. Every detail was handled with care and precision.”
+          </p>
+        </article>
+    </div>
+  </div>
+</section>
+<!-- testimonials end -->
+
  <!-- team start -->
- <div class="section">
+ <div class="section team-tight-top">
   <div class="base-container w-container">
     <div class="slider-team-wrapper">
 
@@ -418,7 +570,7 @@
             <div class="w-slide">
               <div class="team-slide-item">
           
-                <a href="#" class="team-link w-inline-block">
+                <a href="{% url 'project' %}" class="team-link w-inline-block">
                   <div class="overlay">
                     <h3 class="team-name">John Carter</h3>
                     <p class="team-position">Lead Architect</p>
@@ -426,7 +578,7 @@
                   <img src="{% static 'images/team1.jpg' %}" alt="John Carter" class="image-height">
                 </a>
           
-                <a href="#" class="team-link w-inline-block">
+                <a href="{% url 'project' %}" class="team-link w-inline-block">
                   <div class="overlay">
                     <h3 class="team-name">Emily Stone</h3>
                     <p class="team-position">Project Manager</p>
@@ -434,7 +586,7 @@
                   <img src="{% static 'images/team2.jpg' %}" alt="Emily Stone" class="image-height">
                 </a>
           
-                <a href="#" class="team-link w-inline-block">
+                <a href="{% url 'project' %}" class="team-link w-inline-block">
                   <div class="overlay">
                     <h3 class="team-name">Michael Lee</h3>
                     <p class="team-position">Interior Designer</p>
@@ -449,7 +601,7 @@
             <div class="w-slide">
               <div class="team-slide-item">
           
-                <a href="#" class="team-link w-inline-block">
+                <a href="{% url 'project' %}" class="team-link w-inline-block">
                   <div class="overlay">
                     <h3 class="team-name">Sophia Brown</h3>
                     <p class="team-position">Structural Engineer</p>
@@ -457,7 +609,7 @@
                   <img src="{% static 'images/team4.jpg' %}" alt="Sophia Brown" class="image-height">
                 </a>
           
-                <a href="#" class="team-link w-inline-block">
+                <a href="{% url 'project' %}" class="team-link w-inline-block">
                   <div class="overlay">
                     <h3 class="team-name">David Wilson</h3>
                     <p class="team-position">Urban Planner</p>
@@ -465,7 +617,7 @@
                   <img src="{% static 'images/team5.jpg' %}" alt="David Wilson" class="image-height">
                 </a>
           
-                <a href="#" class="team-link w-inline-block">
+                <a href="{% url 'project' %}" class="team-link w-inline-block">
                   <div class="overlay">
                     <h3 class="team-name">Olivia Martinez</h3>
                     <p class="team-position">Design Consultant</p>
@@ -496,48 +648,125 @@
   <!-- team end -->
 
 <!-- blog strat -->
-<section class="section without-top-spacing">
+<section class="section without-top-spacing review-slider-section">
   <div class="w-layout-blockcontainer base-container w-container">
-    <div class="blog-posts-content-wrapper">
-
-     
-
-      <div class="blog-layout">
-
-        <!-- LEFT SIDE -->
-        <div class="blog-left">
-          <h2 class="heading-blog">OUR BLOG</h2>
-          <a href="#" class="secondary-button w-button">Read The Blog</a>
-        </div>
-  
-        <!-- RIGHT SIDE -->
-        <div class="blog-right">
-  
-          <div class="blog-item">
+    <div class="review-header">
+      <h2 class="review-title">CUSTOMER REVIEW</h2>
+      <div class="review-pager" data-review-pager="customer"></div>
+    </div>
+    <div class="review-stack-list" data-review-list="customer">
+          <article class="review-slide" data-review-item>
             <div class="blog-meta">
               04 January / Tom Jhons / Renovation
             </div>
-            <a href="#" class="blog-title">
+            <p class="blog-title">
               Discover emerging trends in urban planning that are shaping the cities of tomorrow
-            </a>
-          </div>
+            </p>
+          </article>
   
-          <div class="blog-item">
+          <article class="review-slide" data-review-item>
             <div class="blog-meta">
               25 July / July Mare / News
             </div>
-            <a href="#" class="blog-title">
+            <p class="blog-title">
               Uncover the latest renovation trends that can refresh and modernize your home, adding both value and comfort.
-            </a>
-          </div>
-  
-        </div>
-  
-      </div>
-  
+            </p>
+          </article>
+
+          <article class="review-slide" data-review-item>
+            <div class="blog-meta">
+              19 March / Arjun Patel / Extension
+            </div>
+            <p class="blog-title">
+              The execution quality was excellent and the final delivery matched our expectations on both finish and timeline.
+            </p>
+          </article>
+
+          <article class="review-slide" data-review-item>
+            <div class="blog-meta">
+              08 June / Emma Clark / Refurbishment
+            </div>
+            <p class="blog-title">
+              Great communication throughout the project, with practical suggestions that improved both cost and usability.
+            </p>
+          </article>
+
+          <article class="review-slide" data-review-item>
+            <div class="blog-meta">
+              14 September / Noah Wilson / Outbuilding
+            </div>
+            <p class="blog-title">
+              Build quality was consistent and the team handled details carefully. We would confidently recommend them.
+            </p>
+          </article>
+
+          <article class="review-slide" data-review-item>
+            <div class="blog-meta">
+              02 November / Sophia Reed / Basement
+            </div>
+            <p class="blog-title">
+              The process was smooth from design to handover, and the final space feels both modern and highly functional.
+            </p>
+          </article>
     </div>
   </div>
 </section>
   <!-- blog end -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const perPage = 2;
+
+    function mountReviewPager(name) {
+      const list = document.querySelector('[data-review-list="' + name + '"]');
+      const pager = document.querySelector('[data-review-pager="' + name + '"]');
+      if (!list || !pager) return;
+      const items = Array.from(list.querySelectorAll("[data-review-item]"));
+      if (!items.length) return;
+      let currentPage = 1;
+
+      function mkBtn(label, onClick, disabled, current) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = label;
+        b.className = "review-page-btn" + (current ? " current" : "");
+        b.disabled = disabled;
+        if (!disabled) b.addEventListener("click", onClick);
+        return b;
+      }
+
+      function render() {
+        const totalPages = Math.max(1, Math.ceil(items.length / perPage));
+        if (currentPage > totalPages) currentPage = totalPages;
+        const start = (currentPage - 1) * perPage;
+        const end = start + perPage;
+        items.forEach((item, index) => {
+          item.style.display = index >= start && index < end ? "" : "none";
+        });
+
+        pager.innerHTML = "";
+        pager.appendChild(
+          mkBtn("Prev", function () { currentPage -= 1; render(); }, currentPage === 1, false)
+        );
+
+        for (let i = 1; i <= totalPages; i++) {
+          if (i < currentPage - 1 || i > currentPage + 1) continue;
+          pager.appendChild(
+            mkBtn(String(i), function () { currentPage = i; render(); }, false, i === currentPage)
+          );
+        }
+
+        pager.appendChild(
+          mkBtn("Next", function () { currentPage += 1; render(); }, currentPage === totalPages, false)
+        );
+      }
+
+      render();
+    }
+
+    mountReviewPager("testimonials");
+    mountReviewPager("customer");
+  });
+</script>
 
 {% endblock %}

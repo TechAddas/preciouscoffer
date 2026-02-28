@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
-from .models import Project, ProjectCategory
+from .models import Project, ProjectCategory, ProjectImage
 
 def home(request):
     base_project_details_url = reverse("project-details")
@@ -19,6 +19,10 @@ def home(request):
             "wf_page": "698fb87304c94142e89f6592",
             "active_page": "home",
             "project_detail_urls": project_detail_urls,
+            "projects_count": Project.objects.count(),
+            "reviews_count": 6,
+            "testimonials_count": 3,
+            "images_count": ProjectImage.objects.count(),
         },
     )
 
@@ -48,7 +52,19 @@ def contact_us(request):
 
 
 def gallery(request):
-    return render(request, "UI/gallary.html", {"wf_page": "698fb87304c94142e89f3e5", "active_page": "gallery"})
+    categories = ProjectCategory.objects.order_by("name")
+    images = ProjectImage.objects.select_related("project", "category").order_by("-id")
+
+    return render(
+        request,
+        "UI/gallary.html",
+        {
+            "wf_page": "698fb87304c94142e89f3e5",
+            "active_page": "gallery",
+            "categories": categories,
+            "images": images,
+        },
+    )
 
 
 def project_details(request, project_id=None):
