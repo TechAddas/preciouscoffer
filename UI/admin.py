@@ -1,8 +1,19 @@
-from django.contrib import admin
+from django.contrib import admin, messages
+from django.conf import settings
+from django.core.mail import send_mail
+from django.urls import reverse
+from django.utils import timezone
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from .models import Project, ProjectCategory, ProjectImage, SiteSocialLinks
+from .models import (
+    Project,
+    ProjectCategory,
+    ProjectImage,
+    SiteSocialLinks,
+    Testimonial,
+    TestimonialInvite,
+)
 
 
 class ProjectImageInline(admin.TabularInline):
@@ -204,3 +215,99 @@ class SiteSocialLinksAdmin(admin.ModelAdmin):
         if SiteSocialLinks.objects.exists():
             return False
         return super().has_add_permission(request)
+
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ("name", "role", "sort_order", "is_active")
+    list_editable = ("sort_order", "is_active")
+    list_filter = ("is_active",)
+    search_fields = ("name", "role", "quote")
+
+
+@admin.register(TestimonialInvite)
+class TestimonialInviteAdmin(admin.ModelAdmin):
+    list_display = ("email", "created_at", "expires_at", "is_used", "is_expired_display", "sent_at")
+    list_filter = ("is_used",)
+    search_fields = ("email",)
+    readonly_fields = ("token", "public_link_preview", "created_at", "sent_at")
+    actions = ("send_invite_email",)
+    fieldsets = (
+        (
+            "Invite Details",
+            {
+                "fields": ("email", "token", "expires_at", "is_used", "public_link_preview"),
+                "description": "Create and share a public testimonial submission link. Default expiry is 10 days.",
+            },
+        ),
+        ("Tracking", {"fields": ("created_at", "sent_at")}),
+    )
+
+    def is_expired_display(self, obj):
+        return obj.is_expired
+
+    is_expired_display.boolean = True
+    is_expired_display.short_description = "Expired"
+
+    def public_link_preview(self, obj):
+        if not obj.pk:
+            return "Save first to generate link."
+        path = reverse("testimonial-public-submit", kwargs={"token": str(obj.token)})
+        return format_html('<a href="{0}" target="_blank">{0}</a>', path)
+
+    public_link_preview.short_description = "Public Link"
+
+    @admin.action(description="Send testimonial invite email")
+    def send_invite_email(self, request, queryset):
+        sent_count = 0
+        skipped = 0
+        failure_reasons = []
+        from_email = getattr(settings, "DEFAULT_FROM_EMAIL", "no-reply@example.com")
+
+        for invite in queryset:
+            if invite.is_used or invite.is_expired:
+                skipped += 1
+                continue
+
+            invite_url = request.build_absolute_uri(
+                reverse("testimonial-public-submit", kwargs={"token": str(invite.token)})
+            )
+            subject = "Share your testimonial - Precious Coffer"
+            message = (
+                "Hi,\n\n"
+                "We would love your feedback. Please use the link below to submit your testimonial:\n"
+                f"{invite_url}\n\n"
+                "This link expires in 10 days.\n\n"
+                "Thank you,\n"
+                "Precious Coffer Team"
+            )
+
+            try:
+                send_mail(
+                    subject=subject,
+                    message=message,
+                    from_email=from_email,
+                    recipient_list=[invite.email],
+                    fail_silently=False,
+                )
+                invite.sent_at = timezone.now()
+                invite.save(update_fields=["sent_at"])
+                sent_count += 1
+            except Exception as exc:
+                skipped += 1
+                failure_reasons.append(f"{invite.email}: {exc}")
+
+        if sent_count:
+            self.message_user(request, f"Sent {sent_count} invite email(s).")
+        if skipped:
+            self.message_user(
+                request,
+                f"Skipped {skipped} invite(s) because they are expired/used or email sending failed.",
+                level=messages.WARNING,
+            )
+        if failure_reasons:
+            self.message_user(
+                request,
+                "Failures: " + "; ".join(failure_reasons[:5]),
+                level=messages.ERROR,
+            )

@@ -1,0 +1,75 @@
+{% extends 'UI/base.html' %}
+
+{% block content %}
+<section class="section" style="background:#f5f5f5; padding:120px 0 80px;">
+  <div class="w-layout-blockcontainer base-container w-container">
+    <div style="max-width:760px; margin:0 auto; background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:28px;">
+      <h2 style="margin-top:0; margin-bottom:8px;">Share Your Testimonial</h2>
+      <p style="margin-bottom:24px; color:#666;">
+        Thank you for sharing your experience with Precious Coffer.
+      </p>
+
+      {% if submitted %}
+      <div style="background:#eef7ee; border:1px solid #b9dcb9; color:#1f6b1f; border-radius:8px; padding:12px 14px; margin-bottom:16px;">
+        Thank you. Your testimonial has been submitted for review.
+      </div>
+      {% elif is_invalid %}
+      <div style="background:#fff4e5; border:1px solid #f3cf9a; color:#8a5a00; border-radius:8px; padding:12px 14px;">
+        This testimonial link is no longer valid. It may be expired or already used.
+      </div>
+      {% else %}
+        {% if form_error %}
+        <div style="background:#fdecec; border:1px solid #f5b8b8; color:#9f1c1c; border-radius:8px; padding:12px 14px; margin-bottom:16px;">
+          {{ form_error }}
+        </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div style="display:grid; grid-template-columns:1fr; gap:12px;">
+            <label style="display:block;">
+              <div style="font-weight:600; margin-bottom:6px;">Name</div>
+              <input
+                type="text"
+                name="name"
+                required
+                value="{{ form_data.name|default:'' }}"
+                style="width:100%; border:1px solid #d9d9d9; border-radius:8px; padding:10px 12px;"
+              >
+            </label>
+
+            <label style="display:block;">
+              <div style="font-weight:600; margin-bottom:6px;">Role (Optional)</div>
+              <input
+                type="text"
+                name="role"
+                value="{{ form_data.role|default:'' }}"
+                style="width:100%; border:1px solid #d9d9d9; border-radius:8px; padding:10px 12px;"
+              >
+            </label>
+
+            <label style="display:block;">
+              <div style="font-weight:600; margin-bottom:6px;">Your Testimonial</div>
+              <textarea
+                name="quote"
+                rows="5"
+                required
+                style="width:100%; border:1px solid #d9d9d9; border-radius:8px; padding:10px 12px;"
+              >{{ form_data.quote|default:'' }}</textarea>
+            </label>
+
+            <label style="display:block;">
+              <div style="font-weight:600; margin-bottom:6px;">Photo (Optional)</div>
+              <input type="file" name="photo" accept="image/*">
+            </label>
+          </div>
+
+          <div style="margin-top:18px;">
+            <button type="submit" class="button">Submit Testimonial</button>
+          </div>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

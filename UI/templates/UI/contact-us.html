@@ -2,6 +2,34 @@
 {% load static %}
 
 {% block content %}
+  <style>
+    .contact-single-address {
+      border: 1px solid #e6e6e6;
+      border-radius: 12px;
+      padding: 18px 20px;
+      background: #fff;
+    }
+
+    .contact-feedback {
+      margin-bottom: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .contact-feedback.success {
+      background: #eef9f1;
+      border: 1px solid #b9e7c5;
+      color: #1f6a35;
+    }
+
+    .contact-feedback.error {
+      background: #fff2f2;
+      border: 1px solid #efc1c1;
+      color: #8d1f1f;
+    }
+  </style>
   <div class="banner-inner-page">
     <div class="base-container w-container">
       <div class="heading-contacts-wrapper">
@@ -28,7 +56,7 @@
             </div>
           </div>
           <div class="link-wrapper-contacts-card">
-            <a href="services.html" class="link-with-icon">Learn more<span class="text-button-icon"></span></a>
+            <a href="{% url 'project' %}" class="link-with-icon">Learn more<span class="text-button-icon"></span></a>
           </div>
         </div>
         <div id="w-node-_4ff299ec-872e-7a44-e97c-fe686577a63a-e89f65eb" data-w-id="4ff299ec-872e-7a44-e97c-fe686577a63a" style="opacity:0" class="card-contacts">
@@ -40,7 +68,7 @@
             </div>
           </div>
           <div class="link-wrapper-contacts-card">
-            <a href="pricing.html" class="link-with-icon">Learn more<span class="text-button-icon"></span></a>
+            <a href="{% url 'project' %}" class="link-with-icon">Learn more<span class="text-button-icon"></span></a>
           </div>
         </div>
         <div id="w-node-_4ff299ec-872e-7a44-e97c-fe686577a642-e89f65eb" data-w-id="4ff299ec-872e-7a44-e97c-fe686577a642" style="opacity:0" class="card-contacts card-mob">
@@ -69,105 +97,32 @@
             <p>Our team is ready to discuss your vision and provide expert advice on how to make the most of your space. Reach out to us for a personalized consultation and let&#x27;s bring your ideas to life</p>
           </div>
           <div class="contacts-divider"></div>
-          <div data-delay="4000" data-animation="slide" class="contacts-location-slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
-            <div class="w-slider-mask">
-              <div class="w-slide">
-                <div class="contacts-detail-wrapper">
-                  <h6 class="address-heading">Bahrain</h6>
-                  <div class="contact-wrapper">
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="https://www.google.com/maps/place/27+Rue+de+Berri,+75008+Paris,+France/@48.8732743,2.3053734,17z/data=!3m1!4b1!4m6!3m5!1s0x47e66fc16ae85c25:0x67057c249d6356e1!8m2!3d48.8732743!4d2.3053734!16s%2Fg%2F11cshv1nm2?entry=ttu" class="contact-link">PO. Box 2749 Off 303, 3rd No.Flr.R, Manama</a>
-                    </div>
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="tel:+12124258617" class="contact-link">+1 212 425 8617</a>
-                    </div>
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="mailto:information@office.com" class="contact-link">info@steele.com</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="w-slide">
-                <div class="contacts-detail-wrapper">
-                  <h6 class="address-heading">Iceland</h6>
-                  <div class="contact-wrapper">
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="https://www.google.com/maps/place/27+Rue+de+Berri,+75008+Paris,+France/@48.8732743,2.3053734,17z/data=!3m1!4b1!4m6!3m5!1s0x47e66fc16ae85c25:0x67057c249d6356e1!8m2!3d48.8732743!4d2.3053734!16s%2Fg%2F11cshv1nm2?entry=ttu" class="contact-link">Skólastígur 24, Djúpivogur</a>
-                    </div>
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="tel:+12124258617" class="contact-link">+1 212 425 8617</a>
-                    </div>
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="mailto:information@office.com" class="contact-link">info@stelle.com</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="w-slide">
-                <div class="contacts-detail-wrapper">
-                  <h6 class="address-heading">Saudi Arabia</h6>
-                  <div class="contact-wrapper">
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="https://www.google.com/maps/place/27+Rue+de+Berri,+75008+Paris,+France/@48.8732743,2.3053734,17z/data=!3m1!4b1!4m6!3m5!1s0x47e66fc16ae85c25:0x67057c249d6356e1!8m2!3d48.8732743!4d2.3053734!16s%2Fg%2F11cshv1nm2?entry=ttu" class="contact-link">Imam Bukhari, Aziziyah Dist, Al Madinah Al Munawarah</a>
-                    </div>
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="tel:+12124258617" class="contact-link">+1 212 425 8617</a>
-                    </div>
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="mailto:information@office.com" class="contact-link">information@office.com</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="w-slide">
-                <div class="contacts-detail-wrapper">
-                  <h6 class="address-heading">Curaçao</h6>
-                  <div class="contact-wrapper">
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="https://www.google.com/maps/place/27+Rue+de+Berri,+75008+Paris,+France/@48.8732743,2.3053734,17z/data=!3m1!4b1!4m6!3m5!1s0x47e66fc16ae85c25:0x67057c249d6356e1!8m2!3d48.8732743!4d2.3053734!16s%2Fg%2F11cshv1nm2?entry=ttu" class="contact-link">Piscadera Bay z/n, Willemstad</a>
-                    </div>
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="tel:+12124258617" class="contact-link">+1 212 425 8617</a>
-                    </div>
-                    <div class="contacts-detail">
-                      <p class="contacts-icon"></p>
-                      <a href="mailto:information@office.com" class="contact-link">information@office.com</a>
-                    </div>
-                  </div>
-                </div>
+          <div class="contact-single-address">
+            <h6 class="address-heading">United Kingdom</h6>
+            <div class="contact-wrapper">
+              <div class="contacts-detail">
+                <p class="contacts-icon"></p>
+                <span class="contact-link">40 Kingston Road, Southall, United Kingdom, UB2 4AP</span>
               </div>
             </div>
-            <div class="contacts-left-arrow w-slider-arrow-left">
-              <div class="contacts-slider-arrow-icon"></div>
-            </div>
-            <div class="contacts-right-arrow w-slider-arrow-right">
-              <div class="contacts-slider-arrow-icon"></div>
-            </div>
-            <div class="hidden w-slider-nav w-round"></div>
-            <div class="contacts-arrows-divider"></div>
           </div>
         </div>
         <div data-w-id="92a8d9be-2b86-6361-2ecb-849b408b23c7" style="opacity:0" class="contacts-form-wrapper">
           <h3 class="contacts-form-title">Send us a message</h3>
           <div class="form-block-contacts w-form">
-            <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form-contacts" data-wf-page-id="698fb87304c94142e89f65eb" data-wf-element-id="ea41af14-8b87-8ae8-ae5d-f8373dc8aafa"><input class="contacts-input w-input" maxlength="256" name="name" data-name="Name" placeholder="Your name" type="text" id="name" required=""><input class="contacts-input w-input" maxlength="256" name="email" data-name="Email" placeholder="Your email" type="email" id="email" required=""><textarea placeholder="Your text" maxlength="5000" id="field" name="field" data-name="field" required="" class="contacts-textarea w-input"></textarea><input type="submit" data-wait="Please wait..." class="primary-button full-width-mobile w-button" value="Submit"></form>
-            <div class="success-message align-left w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="error-message form-error w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
+            {% if form_success %}
+              <div class="contact-feedback success">Thank you! Your message has been sent successfully.</div>
+            {% endif %}
+            {% if form_error %}
+              <div class="contact-feedback error">{{ form_error }}</div>
+            {% endif %}
+            <form id="email-form" name="email-form" data-name="Email Form" method="post" action="{% url 'contact-us' %}" class="form-contacts" data-wf-page-id="698fb87304c94142e89f65eb" data-wf-element-id="ea41af14-8b87-8ae8-ae5d-f8373dc8aafa">
+              {% csrf_token %}
+              <input class="contacts-input w-input" maxlength="256" name="name" data-name="Name" placeholder="Your name" type="text" id="name" required="" value="{{ form_data.name|default:'' }}">
+              <input class="contacts-input w-input" maxlength="256" name="email" data-name="Email" placeholder="Your email" type="email" id="email" required="" value="{{ form_data.email|default:'' }}">
+              <textarea placeholder="Your text" maxlength="5000" id="field" name="field" data-name="field" required="" class="contacts-textarea w-input">{{ form_data.field|default:'' }}</textarea>
+              <input type="submit" data-wait="Please wait..." class="primary-button full-width-mobile w-button" value="Submit">
+            </form>
           </div>
         </div>
       </div>
@@ -179,7 +134,7 @@
         <div class="partners-title-wrapper">
           <h2 data-w-id="543e2867-6a64-ecb0-a8d4-daa4dd8fef09" class="capitalize">Our partners</h2>
         </div>
-        <a data-w-id="fc4c7c6b-b227-49db-e7ff-949580831d39" href="clients.html" class="secondary-button hide-mob w-button">View All</a>
+        <a data-w-id="fc4c7c6b-b227-49db-e7ff-949580831d39" href="{% url 'project' %}" class="secondary-button hide-mob w-button">View All</a>
       </div>
       <div class="text-services-wrapper-copy">
         <div data-w-id="575badc6-49c2-0769-6a7c-261b8564d1a9" style="opacity:0" class="w-layout-grid customers-grid-contacts">
@@ -202,7 +157,7 @@
             <div class="customer-title">Fluid, MI</div>
           </div>
         </div>
-        <a href="clients.html" class="secondary-button hide w-button">View all</a>
+        <a href="{% url 'project' %}" class="secondary-button hide w-button">View all</a>
       </div>
     </div>
   </div>
@@ -211,61 +166,26 @@
       <h2 data-w-id="d4f5eacc-e7d0-5c27-12e9-628b5dd24e37" class="testimonials-title">Testimonials</h2>
       <div data-delay="400" data-animation="slide" class="testimonials-slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="5" data-duration="500" data-infinite="true">
         <div class="testimonials-slider-mask-wrapper w-slider-mask">
-          <div class="slide-1 w-slide">
-            <div class="testimonials-slide-item">
-              <p data-w-id="d4f5eacc-e7d0-5c27-12e9-628b5dd24e3d" class="paragraph-large quote">&quot;Working with this architectural agency was a game-changer for our commercial projects. Their innovative designs and attention to detail exceeded our expectations, delivering a final product that perfectly aligned with our brand and vision&quot;</p>
-              <div data-w-id="d4f5eacc-e7d0-5c27-12e9-628b5dd24e3f" class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-15_1Member-Photo-15.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">Ronald Richards</h6>
-                  <p>CEO, Anderson Real Estate</p>
+          {% for item in testimonials %}
+            <div class="w-slide">
+              <div class="testimonials-slide-item">
+                <p class="paragraph-large quote">&quot;{{ item.quote }}&quot;</p>
+                <div class="testimonials-slider-profile-wraper">
+                  {% if item.photo %}
+                    <img src="{{ item.photo.url }}" loading="lazy" alt="{{ item.name }}" class="testimonials-slider-image">
+                  {% else %}
+                    <img src="{% static 'images/Member-Photo-15_1Member-Photo-15.webp' %}" loading="lazy" alt="{{ item.name }}" class="testimonials-slider-image">
+                  {% endif %}
+                  <div class="testimonials-author-wrapper">
+                    <h6 class="testimonials-name">{{ item.name }}</h6>
+                    {% if item.role %}
+                      <p class="paragraph-without-margin">{{ item.role }}</p>
+                    {% endif %}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="slide-2 w-slide">
-            <div class="testimonials-slide-item">
-              <p class="paragraph-large quote">&quot;The renovation of our home was seamless, thanks to the team’s expertise and commitment to quality. They truly listened to our needs and transformed our outdated space into a modern, functional, and beautiful home.&quot;</p>
-              <div class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-9_1Member-Photo-9.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">Sarah Bennett</h6>
-                  <p class="paragraph-without-margin">Homeowner</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide-3 w-slide">
-            <div class="testimonials-slide-item">
-              <p class="paragraph-large quote">&quot;Their ability to blend sustainable practices with cutting-edge design is unparalleled. We were thrilled with the results and impressed by their dedication to creating environmentally-friendly and aesthetically pleasing spaces.&quot;</p>
-              <div class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-14_1Member-Photo-14.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">David Foster</h6>
-                  <p class="paragraph-without-margin">Director of Operations</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide-4 w-slide">
-            <div class="testimonials-slide-item">
-              <p class="paragraph-large quote">&quot;Collaborating with this agency was an absolute pleasure. Their creative approach and professionalism made the process smooth, and the final designs were nothing short of stunning. Our clients were delighted with the results.&quot;</p>
-              <div class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-13_1Member-Photo-13.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">James Miller</h6>
-                  <p class="paragraph-without-margin">Property Developer</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide-5 w-slide">
-            <div class="testimonials-slide-item">
-              <p class="paragraph-large quote">&quot;This team brought a fresh perspective to our urban development projects. Their innovative designs and thorough project management ensured that everything was completed on time and within budget.&quot;</p>
-              <div class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-10_1Member-Photo-10.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">Emily Carter</h6>
-                  <p class="paragraph-without-margin">Interior Designer</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <div class="testimonials-slider-left-arrow w-slider-arrow-left"></div>
         <div class="testimonials-slider-right-arrow w-slider-arrow-right"></div>

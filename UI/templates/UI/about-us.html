@@ -2,6 +2,262 @@
 {% load static %}
 
 {% block content %}
+  <style>
+    .numbers-section {
+      padding-bottom: 14px;
+    }
+
+    .process-progress-section {
+      padding-top: 28px;
+      padding-bottom: 36px;
+      background: #ececec;
+    }
+
+    .process-progress-header {
+      max-width: 860px;
+      margin-bottom: 26px;
+    }
+
+    .process-progress-title {
+      margin-bottom: 10px;
+      font-family: Lato, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .process-progress-subtitle {
+      color: #5f5f5f;
+      margin-bottom: 0;
+      font-family: Lato, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .process-timeline {
+      position: relative;
+      padding: 8px 0 0;
+      --timeline-progress: 0px;
+    }
+
+    .process-timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 26px;
+      bottom: 26px;
+      width: 8px;
+    }
+
+    .process-timeline::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 26px;
+      height: var(--timeline-progress);
+      width: 8px;
+      background-image: radial-gradient(circle, #d10000 3px, transparent 3.2px);
+      background-size: 8px 14px;
+      background-repeat: repeat-y;
+      pointer-events: none;
+      transition: height 0.08s linear;
+    }
+
+    .process-row {
+      display: grid;
+      grid-template-columns: 1fr 120px 1fr;
+      align-items: center;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+      transition: opacity 0.24s ease;
+    }
+
+    .process-node {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #4a4a4a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      font-size: 30px;
+      line-height: 1;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+      transition: background-color 0.24s ease, transform 0.24s ease;
+    }
+
+    .process-row.is-active .process-node {
+      background: #d10000;
+      transform: scale(1.05);
+    }
+
+    .process-title {
+      font-family: Lato, sans-serif;
+      font-size: clamp(24px, 2.3vw, 38px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #3f3f3f;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .process-title.align-right {
+      text-align: right;
+      padding-right: 20px;
+    }
+
+    .process-title.align-left {
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    .process-bubble {
+      font-family: Lato, sans-serif;
+      background: #f5f5f5;
+      border: 1px solid #ebebeb;
+      border-radius: 20px;
+      padding: 28px 34px;
+      color: #3e3e3e;
+      font-size: 15px;
+      line-height: 1.65;
+      letter-spacing: 0;
+      position: relative;
+      margin: 0 14px;
+      transition: box-shadow 0.24s ease, transform 0.24s ease;
+    }
+
+    .process-bubble::after {
+      content: "";
+      position: absolute;
+      top: 34px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .process-bubble.right::after {
+      left: -16px;
+      border-width: 12px 16px 12px 0;
+      border-color: transparent #f2f2f2 transparent transparent;
+    }
+
+    .process-bubble.left::after {
+      right: -16px;
+      border-width: 12px 0 12px 16px;
+      border-color: transparent transparent transparent #f2f2f2;
+    }
+
+    .process-row.is-active .process-bubble {
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    .process-row.is-active .process-bubble.right::after {
+      border-color: transparent #f5f5f5 transparent transparent;
+    }
+
+    .process-row.is-active .process-bubble.left::after {
+      border-color: transparent transparent transparent #f5f5f5;
+    }
+
+    .process-row:hover .process-node {
+      background: #d10000;
+      transform: scale(1.05);
+    }
+
+    .process-row:hover .process-bubble {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    .process-row:hover .process-bubble.right::after {
+      border-color: transparent #f5f5f5 transparent transparent;
+    }
+
+    .process-row:hover .process-bubble.left::after {
+      border-color: transparent transparent transparent #f5f5f5;
+    }
+
+    @media (max-width: 991px) {
+      .process-title {
+        font-size: clamp(22px, 3.6vw, 30px);
+      }
+
+      .process-row {
+        grid-template-columns: 1fr 92px 1fr;
+      }
+
+      .process-node {
+        width: 54px;
+        height: 54px;
+        font-size: 24px;
+      }
+
+      .process-bubble {
+        font-size: 14px;
+        padding: 20px 22px;
+      }
+
+      .process-progress-subtitle {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .process-timeline::before {
+        left: 24px;
+        transform: none;
+        top: 18px;
+        bottom: 18px;
+      }
+
+      .process-timeline::after {
+        left: 24px;
+        transform: none;
+        top: 18px;
+      }
+
+      .process-row {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .process-node {
+        grid-column: 1;
+        grid-row: 1;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .process-title {
+        grid-column: 2;
+        font-size: 22px;
+        padding: 0 !important;
+        margin-bottom: 8px;
+      }
+
+      .process-bubble {
+        grid-column: 2;
+        margin: 0;
+        padding: 16px 14px;
+        font-size: 14px;
+      }
+
+      .process-progress-subtitle {
+        font-size: 15px;
+      }
+
+      .process-bubble.left::after,
+      .process-bubble.right::after {
+        display: none;
+      }
+    }
+  </style>
   <div class="banner-inner-page">
     <div class="base-container w-container">
       <div class="heading-wrapper-aligh-bottom">
@@ -19,47 +275,20 @@
     <div class="w-layout-blockcontainer base-container w-container">
       <div class="numbers-section">
         <div data-w-id="220f7591-ae66-655c-7dcc-26662f1aeeb3" style="opacity:0" class="number-wrap">
-          <p class="nuber">8</p>
-          <p>Years</p>
+          <p class="nuber">{{ projects_count }}</p>
+          <p class="paragraph-without-margin">Project</p>
         </div>
         <div data-w-id="220f7591-ae66-655c-7dcc-26662f1aeeb8" style="opacity:0" class="number-wrap">
-          <p class="nuber">22</p>
-          <p>Members</p>
+          <p class="nuber">{{ reviews_count }}</p>
+          <p class="paragraph-without-margin">Reviews</p>
         </div>
         <div data-w-id="220f7591-ae66-655c-7dcc-26662f1aeebd" style="opacity:0" class="number-wrap">
-          <p class="nuber">72</p>
-          <p>Projects</p>
+          <p class="nuber">{{ testimonials_count }}</p>
+          <p class="paragraph-without-margin">Testimonials</p>
         </div>
         <div data-w-id="220f7591-ae66-655c-7dcc-26662f1aeec2" style="opacity:0" class="number-wrap">
-          <p class="nuber">44</p>
-          <p>Awards</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="w-layout-blockcontainer base-container w-container">
-      <div class="text-content-wrap-home-3">
-        <div data-w-id="816a7673-f9ee-97d2-b719-1b365c29d416" class="capabilities-wrap-home-3">
-          <div class="image-capabilities-wrapper"><img src="{% static 'images/Services-1_1Services-1.webp' %}" loading="lazy" alt="Image" class="image-height"></div>
-          <div class="text-content-capabilities">
-            <h6>Design Approach</h6>
-            <p>We work closely with our clients to gain a understanding of their desires, both philosophical and practical.</p>
-          </div>
-        </div>
-        <div data-w-id="816a7673-f9ee-97d2-b719-1b365c29d41e" class="capabilities-wrap-home-3">
-          <div class="image-capabilities-wrapper"><img src="{% static 'images/Services-2_1Services-2.webp' %}" loading="lazy" alt="Image" class="image-height"></div>
-          <div class="text-content-capabilities">
-            <h6>Innovative Solutions</h6>
-            <p>We integrate the latest technologies and creative techniques to develop innovative solutions for your unique needs.</p>
-          </div>
-        </div>
-        <div data-w-id="816a7673-f9ee-97d2-b719-1b365c29d426" class="capabilities-wrap-home-3">
-          <div class="image-capabilities-wrapper"><img src="{% static 'images/Services-3_1Services-3.webp' %}" loading="lazy" alt="Image" class="image-height"></div>
-          <div class="text-content-capabilities">
-            <h6>Project Management</h6>
-            <p>Our team ensures each project is executed flawlessly from start to finish with the standards and keeping a keen eye on details.</p>
-          </div>
+          <p class="nuber">{{ images_count }}</p>
+          <p class="paragraph-without-margin">Images</p>
         </div>
       </div>
     </div>
@@ -84,61 +313,38 @@
       <h2 data-w-id="d4f5eacc-e7d0-5c27-12e9-628b5dd24e37" class="testimonials-title">Testimonials</h2>
       <div data-delay="400" data-animation="slide" class="testimonials-slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="5" data-duration="500" data-infinite="true">
         <div class="testimonials-slider-mask-wrapper w-slider-mask">
-          <div class="slide-1 w-slide">
-            <div class="testimonials-slide-item">
-              <p data-w-id="d4f5eacc-e7d0-5c27-12e9-628b5dd24e3d" class="paragraph-large quote">&quot;Working with this architectural agency was a game-changer for our commercial projects. Their innovative designs and attention to detail exceeded our expectations, delivering a final product that perfectly aligned with our brand and vision&quot;</p>
-              <div data-w-id="d4f5eacc-e7d0-5c27-12e9-628b5dd24e3f" class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-15_1Member-Photo-15.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">Ronald Richards</h6>
-                  <p>CEO, Anderson Real Estate</p>
+          {% for item in testimonials %}
+            <div class="w-slide">
+              <div class="testimonials-slide-item">
+                <p class="paragraph-large quote">&quot;{{ item.quote }}&quot;</p>
+                <div class="testimonials-slider-profile-wraper">
+                  {% if item.photo %}
+                    <img src="{{ item.photo.url }}" loading="lazy" alt="{{ item.name }}" class="testimonials-slider-image">
+                  {% else %}
+                    <img src="{% static 'images/Member-Photo-15_1Member-Photo-15.webp' %}" loading="lazy" alt="{{ item.name }}" class="testimonials-slider-image">
+                  {% endif %}
+                  <div class="testimonials-author-wrapper">
+                    <h6 class="testimonials-name">{{ item.name }}</h6>
+                    {% if item.role %}
+                      <p class="paragraph-without-margin">{{ item.role }}</p>
+                    {% endif %}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="slide-2 w-slide">
-            <div class="testimonials-slide-item">
-              <p class="paragraph-large quote">&quot;The renovation of our home was seamless, thanks to the team’s expertise and commitment to quality. They truly listened to our needs and transformed our outdated space into a modern, functional, and beautiful home.&quot;</p>
-              <div class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-9_1Member-Photo-9.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">Sarah Bennett</h6>
-                  <p class="paragraph-without-margin">Homeowner</p>
+          {% empty %}
+            <div class="w-slide">
+              <div class="testimonials-slide-item">
+                <p class="paragraph-large quote">&quot;No testimonials added yet. Add testimonials from Admin to display them here.&quot;</p>
+                <div class="testimonials-slider-profile-wraper">
+                  <img src="{% static 'images/Member-Photo-15_1Member-Photo-15.webp' %}" loading="lazy" alt="Default" class="testimonials-slider-image">
+                  <div class="testimonials-author-wrapper">
+                    <h6 class="testimonials-name">Precious Coffer</h6>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="slide-3 w-slide">
-            <div class="testimonials-slide-item">
-              <p class="paragraph-large quote">&quot;Their ability to blend sustainable practices with cutting-edge design is unparalleled. We were thrilled with the results and impressed by their dedication to creating environmentally-friendly and aesthetically pleasing spaces.&quot;</p>
-              <div class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-14_1Member-Photo-14.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">David Foster</h6>
-                  <p class="paragraph-without-margin">Director of Operations</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide-4 w-slide">
-            <div class="testimonials-slide-item">
-              <p class="paragraph-large quote">&quot;Collaborating with this agency was an absolute pleasure. Their creative approach and professionalism made the process smooth, and the final designs were nothing short of stunning. Our clients were delighted with the results.&quot;</p>
-              <div class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-13_1Member-Photo-13.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">James Miller</h6>
-                  <p class="paragraph-without-margin">Property Developer</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide-5 w-slide">
-            <div class="testimonials-slide-item">
-              <p class="paragraph-large quote">&quot;This team brought a fresh perspective to our urban development projects. Their innovative designs and thorough project management ensured that everything was completed on time and within budget.&quot;</p>
-              <div class="testimonials-slider-profile-wraper"><img src="{% static 'images/Member-Photo-10_1Member-Photo-10.webp' %}" loading="lazy" alt="photo" class="testimonials-slider-image">
-                <div class="testimonials-author-wrapper">
-                  <h6 class="testimonials-name">Emily Carter</h6>
-                  <p class="paragraph-without-margin">Interior Designer</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <div class="testimonials-slider-left-arrow w-slider-arrow-left"></div>
         <div class="testimonials-slider-right-arrow w-slider-arrow-right"></div>
@@ -335,71 +541,6 @@
   </div>
 </div>
   <!-- team end -->
-  <section class="section without-top-spacing">
-    <div class="w-layout-blockcontainer base-container w-container">
-      <h2 data-w-id="859836b3-e4c0-4891-e222-4d8e7b5187aa" style="opacity:0" class="faq-title">the most common questions</h2>
-      <div class="accordion-wrapper">
-        <div data-w-id="46e0ad3c-32ac-c9eb-1ce6-82171a0b6551" style="opacity:0" class="accordion-wrap">
-          <div data-delay="0" data-hover="false" data-w-id="46e0ad3c-32ac-c9eb-1ce6-82171a0b6552" class="accordion-item top-item w-dropdown">
-            <div class="accordion-toggle w-dropdown-toggle">
-              <h6 style="color:rgb(0,0,0)" class="accordion-title">Can you work within my budget?</h6>
-              <div style="color:rgb(0,0,0);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" class="accordion-icon"></div>
-            </div>
-            <nav style="height:0px" class="accordion-list w-dropdown-list">
-              <p class="accordion-list-content">We understand the importance of budget constraints, and we work closely with you to develop a plan that meets your financial requirements.</p>
-            </nav>
-          </div>
-          <div data-delay="0" data-hover="false" data-w-id="46e0ad3c-32ac-c9eb-1ce6-82171a0b655b" class="accordion-item w-dropdown">
-            <div class="accordion-toggle w-dropdown-toggle">
-              <h6 style="color:rgb(0,0,0)" class="accordion-title">Do you handle new builds?</h6>
-              <div style="color:rgb(0,0,0);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" class="accordion-icon"></div>
-            </div>
-            <nav style="height:0px" class="accordion-list w-dropdown-list">
-              <p class="accordion-list-content">Whether you’re starting from scratch or looking to transform an existing space, our team has the expertise to deliver outstanding results that align with your goals.</p>
-            </nav>
-          </div>
-          <div data-delay="0" data-hover="false" data-w-id="46e0ad3c-32ac-c9eb-1ce6-82171a0b6564" class="accordion-item w-dropdown">
-            <div class="accordion-toggle w-dropdown-toggle">
-              <h6 style="color:rgb(0,0,0)" class="accordion-title">What sets your agency apart?</h6>
-              <div style="color:rgb(0,0,0);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" class="accordion-icon"></div>
-            </div>
-            <nav style="height:0px" class="accordion-list w-dropdown-list">
-              <p class="accordion-list-content">Our agency stands out for its innovative approach, meticulous attention to detail, and unwavering commitment to client satisfaction.</p>
-            </nav>
-          </div>
-        </div>
-        <div data-w-id="46e0ad3c-32ac-c9eb-1ce6-82171a0b6576" style="opacity:0" class="accordion-wrap last-child">
-          <div data-delay="0" data-hover="false" data-w-id="46e0ad3c-32ac-c9eb-1ce6-82171a0b6577" class="accordion-item top-item-mob w-dropdown">
-            <div class="accordion-toggle w-dropdown-toggle">
-              <h6 style="color:rgb(0,0,0)" class="accordion-title">How long does a typical project take?</h6>
-              <div style="color:rgb(0,0,0);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" class="accordion-icon"></div>
-            </div>
-            <nav style="height:0px" class="accordion-list w-dropdown-list">
-              <p class="accordion-list-content">We work diligently to ensure that all phases of the project are completed on time, without sacrificing the quality and attention to detail that we’re known for.</p>
-            </nav>
-          </div>
-          <div data-delay="0" data-hover="false" data-w-id="fb14f3df-e667-c785-3de7-d71d186eb743" class="accordion-item w-dropdown">
-            <div class="accordion-toggle w-dropdown-toggle">
-              <h6 style="color:rgb(0,0,0)" class="accordion-title">What services do you offer?</h6>
-              <div style="color:rgb(0,0,0);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" class="accordion-icon"></div>
-            </div>
-            <nav style="height:0px" class="accordion-list w-dropdown-list">
-              <p class="accordion-list-content">We provide a comprehensive range of services, including architectural design, renovations, and project management for both residential and commercial spaces.</p>
-            </nav>
-          </div>
-          <div data-delay="0" data-hover="false" data-w-id="46e0ad3c-32ac-c9eb-1ce6-82171a0b6589" class="accordion-item w-dropdown">
-            <div class="accordion-toggle w-dropdown-toggle">
-              <h6 style="color:rgb(0,0,0)" class="accordion-title">How do I get started?</h6>
-              <div style="color:rgb(0,0,0);-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(null) rotateY(null) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" class="accordion-icon"></div>
-            </div>
-            <nav style="height:0px" class="accordion-list w-dropdown-list">
-              <p class="accordion-list-content">Simply reach out to us for an initial consultation, and we’ll walk you through the process, from understanding your vision to developing a tailored plan.</p>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <section class="section background-black">
     <div class="w-layout-blockcontainer base-container w-container">
       <div class="cta">

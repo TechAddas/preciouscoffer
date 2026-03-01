@@ -524,26 +524,12 @@
       <div class="review-pager" data-review-pager="testimonials"></div>
     </div>
     <div class="review-stack-list" data-review-list="testimonials">
+      {% for item in home_testimonials %}
         <article class="review-slide" data-review-item>
-          <div class="blog-meta">Refurbishment / London</div>
-          <p class="blog-title">
-            “Excellent execution and clear communication from start to finish. The final result exceeded our expectations.”
-          </p>
+          <div class="blog-meta">{{ item.role|default:"Client Feedback" }}{% if item.name %} / {{ item.name }}{% endif %}</div>
+          <p class="blog-title">“{{ item.quote }}”</p>
         </article>
-
-        <article class="review-slide" data-review-item>
-          <div class="blog-meta">Extension / Surrey</div>
-          <p class="blog-title">
-            “The team translated our ideas into a practical, elegant space. Timelines were managed professionally.”
-          </p>
-        </article>
-
-        <article class="review-slide" data-review-item>
-          <div class="blog-meta">Outbuilding / Kent</div>
-          <p class="blog-title">
-            “Quality of workmanship was outstanding. Every detail was handled with care and precision.”
-          </p>
-        </article>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -655,59 +641,12 @@
       <div class="review-pager" data-review-pager="customer"></div>
     </div>
     <div class="review-stack-list" data-review-list="customer">
-          <article class="review-slide" data-review-item>
-            <div class="blog-meta">
-              04 January / Tom Jhons / Renovation
-            </div>
-            <p class="blog-title">
-              Discover emerging trends in urban planning that are shaping the cities of tomorrow
-            </p>
-          </article>
-  
-          <article class="review-slide" data-review-item>
-            <div class="blog-meta">
-              25 July / July Mare / News
-            </div>
-            <p class="blog-title">
-              Uncover the latest renovation trends that can refresh and modernize your home, adding both value and comfort.
-            </p>
-          </article>
-
-          <article class="review-slide" data-review-item>
-            <div class="blog-meta">
-              19 March / Arjun Patel / Extension
-            </div>
-            <p class="blog-title">
-              The execution quality was excellent and the final delivery matched our expectations on both finish and timeline.
-            </p>
-          </article>
-
-          <article class="review-slide" data-review-item>
-            <div class="blog-meta">
-              08 June / Emma Clark / Refurbishment
-            </div>
-            <p class="blog-title">
-              Great communication throughout the project, with practical suggestions that improved both cost and usability.
-            </p>
-          </article>
-
-          <article class="review-slide" data-review-item>
-            <div class="blog-meta">
-              14 September / Noah Wilson / Outbuilding
-            </div>
-            <p class="blog-title">
-              Build quality was consistent and the team handled details carefully. We would confidently recommend them.
-            </p>
-          </article>
-
-          <article class="review-slide" data-review-item>
-            <div class="blog-meta">
-              02 November / Sophia Reed / Basement
-            </div>
-            <p class="blog-title">
-              The process was smooth from design to handover, and the final space feels both modern and highly functional.
-            </p>
-          </article>
+      {% for item in home_testimonials %}
+        <article class="review-slide" data-review-item>
+          <div class="blog-meta">{{ item.role|default:"Client Feedback" }}{% if item.name %} / {{ item.name }}{% endif %}</div>
+          <p class="blog-title">“{{ item.quote }}”</p>
+        </article>
+      {% endfor %}
     </div>
   </div>
 </section>

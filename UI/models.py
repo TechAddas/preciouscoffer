@@ -1,6 +1,9 @@
 import os
+import uuid
+from datetime import timedelta
 
 from django.db import models
+from django.utils import timezone
 
 try:
     from PIL import Image, ImageOps
@@ -166,3 +169,43 @@ class SiteSocialLinks(models.Model):
 
     def __str__(self):
         return "Site Social Links"
+
+
+class Testimonial(models.Model):
+    name = models.CharField(max_length=120)
+    role = models.CharField(max_length=160, blank=True)
+    quote = models.TextField()
+    photo = models.FileField(upload_to="testimonials/", blank=True)
+    sort_order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["sort_order", "-created_at"]
+
+    def __str__(self):
+        return self.name
+
+
+class TestimonialInvite(models.Model):
+    email = models.EmailField()
+    token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    expires_at = models.DateTimeField(blank=True)
+    is_used = models.BooleanField(default=False)
+    sent_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.email} ({self.token})"
+
+    def save(self, *args, **kwargs):
+        if not self.expires_at:
+            self.expires_at = timezone.now() + timedelta(days=10)
+        super().save(*args, **kwargs)
+
+    @property
+    def is_expired(self):
+        return timezone.now() > self.expires_at
