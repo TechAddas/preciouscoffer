@@ -178,8 +178,11 @@ def contact_us(request):
                     pass
                 context["form_success"] = True
                 context["form_data"] = {}
-            except Exception:
-                context["form_error"] = "Message could not be sent right now. Please try again."
+            except Exception as exc:
+                if settings.DEBUG:
+                    context["form_error"] = f"Message could not be sent: {exc}"
+                else:
+                    context["form_error"] = "Message could not be sent right now. Please try again."
 
     return render(request, "UI/contact-us.html", context)
 
