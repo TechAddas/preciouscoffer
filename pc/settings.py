@@ -36,9 +36,12 @@ DEBUG = env_bool("DEBUG", True)
 
 ALLOWED_HOSTS_ENV = os.getenv("ALLOWED_HOSTS", "")
 if ALLOWED_HOSTS_ENV.strip():
-    ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_ENV.split(",") if host.strip()]
+    if ALLOWED_HOSTS_ENV.strip() == "*":
+        ALLOWED_HOSTS = ["*"]
+    else:
+        ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_ENV.split(",") if host.strip()]
 else:
-    ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+    ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
