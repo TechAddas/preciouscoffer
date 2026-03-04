@@ -43,6 +43,18 @@ if ALLOWED_HOSTS_ENV.strip():
 else:
     ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS_ENV = os.getenv("CSRF_TRUSTED_ORIGINS", "")
+if CSRF_TRUSTED_ORIGINS_ENV.strip():
+    CSRF_TRUSTED_ORIGINS = [
+        origin.strip()
+        for origin in CSRF_TRUSTED_ORIGINS_ENV.split(",")
+        if origin.strip()
+    ]
+else:
+    CSRF_TRUSTED_ORIGINS = [
+        "https://*.up.railway.app",
+    ]
+
 
 # Application definition
 
@@ -67,6 +79,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Respect HTTPS forwarded by proxy/load balancer (Railway, Render, etc.)
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 ROOT_URLCONF = 'pc.urls'
 
