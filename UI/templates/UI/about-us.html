@@ -293,6 +293,58 @@
       </div>
     </div>
   </section>
+  <section id="our-process" class="section process-progress-section">
+    <div class="w-layout-blockcontainer base-container w-container">
+      <div class="process-progress-header">
+        <h2 class="process-progress-title">Our Process</h2>
+        <p class="process-progress-subtitle">
+          We run every project through a clear workflow so delivery stays predictable, transparent, and on schedule.
+        </p>
+      </div>
+      <div class="process-timeline" data-process-timeline>
+        <div class="process-row" data-process-row>
+          <h3 class="process-title align-right">Introduction &amp; Briefing</h3>
+          <div class="process-node">&#10003;</div>
+          <div class="process-bubble right">To understand what you want to achieve and reassure you that we can deliver it.</div>
+        </div>
+        <div class="process-row" data-process-row>
+          <div class="process-bubble left">Introduce you to professionals to fit the brief, from architects to consultants based on project needs.</div>
+          <div class="process-node">&#10003;</div>
+          <h3 class="process-title align-left">Pre-build Planning</h3>
+        </div>
+        <div class="process-row" data-process-row>
+          <h3 class="process-title align-right">Tender Preparation</h3>
+          <div class="process-node">&#10003;</div>
+          <div class="process-bubble right">We assemble a detailed tender pack for builders to quote accurately and transparently.</div>
+        </div>
+        <div class="process-row" data-process-row>
+          <div class="process-bubble left">We review quotations, clarify scope, and support appointment of the right builder for your project.</div>
+          <div class="process-node">&#10003;</div>
+          <h3 class="process-title align-left">Builder Appointment</h3>
+        </div>
+        <div class="process-row" data-process-row>
+          <h3 class="process-title align-right">Project Start</h3>
+          <div class="process-node">&#10003;</div>
+          <div class="process-bubble right">Site setup and construction begin with regular progress checks and milestone reporting.</div>
+        </div>
+        <div class="process-row" data-process-row>
+          <div class="process-bubble left">Materials and suppliers are coordinated to maintain quality, timeline, and procurement efficiency.</div>
+          <div class="process-node">&#10003;</div>
+          <h3 class="process-title align-left">Materials &amp; Suppliers</h3>
+        </div>
+        <div class="process-row" data-process-row>
+          <h3 class="process-title align-right">Site Logistics &amp; Cost Control</h3>
+          <div class="process-node">&#10003;</div>
+          <div class="process-bubble right">We manage site operations, sequencing, and budget tracking to avoid delays and cost surprises.</div>
+        </div>
+        <div class="process-row" data-process-row>
+          <div class="process-bubble left">Final checks, handover documents, and completion sign-off to close the project confidently.</div>
+          <div class="process-node">&#10003;</div>
+          <h3 class="process-title align-left">Completion &amp; Handover</h3>
+        </div>
+      </div>
+    </div>
+  </section>
   <section data-w-id="56e22fea-1280-ca6a-587a-3ae6d8a9ce6e" class="section small-paddings">
     <div class="w-layout-blockcontainer base-container w-container">
       <div class="services-wrapper-about-us">
@@ -560,5 +612,37 @@
       </div>
     </div>
   </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const timeline = document.querySelector("[data-process-timeline]");
+      if (!timeline) return;
+      const rows = Array.from(timeline.querySelectorAll("[data-process-row]"));
+      if (!rows.length) return;
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function updateProcessProgress() {
+        const rect = timeline.getBoundingClientRect();
+        const start = window.innerHeight * 0.3;
+        const end = window.innerHeight * 0.8;
+        const visible = clamp(end - rect.top, 0, rect.height + (end - start));
+        const progress = clamp(visible, 0, rect.height);
+        timeline.style.setProperty("--timeline-progress", progress + "px");
+
+        rows.forEach(function (row) {
+          const rowRect = row.getBoundingClientRect();
+          const rowCenter = rowRect.top + rowRect.height / 2;
+          const isActive = rowCenter <= window.innerHeight * 0.62;
+          row.classList.toggle("is-active", isActive);
+        });
+      }
+
+      updateProcessProgress();
+      window.addEventListener("scroll", updateProcessProgress, { passive: true });
+      window.addEventListener("resize", updateProcessProgress);
+    });
+  </script>
   <div class="footer">
 {% endblock %}
