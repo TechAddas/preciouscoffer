@@ -15,6 +15,10 @@ from .models import (
     TestimonialInvite,
 )
 
+admin.site.site_header = "PreciousCoffer Admin"
+admin.site.site_title = "PreciousCoffer Admin Portal"
+admin.site.index_title = "Site Administration"
+
 
 class ProjectImageInline(admin.TabularInline):
     model = ProjectImage

@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}Precious Coffer Admin{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.jpg' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/logo.jpg' %}">
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Precious Coffer Admin</a></h1>
+{% endblock %}

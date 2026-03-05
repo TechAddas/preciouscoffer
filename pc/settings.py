@@ -88,7 +88,10 @@ ROOT_URLCONF = 'pc.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'Web' / 'preciouscoffer-web.webflow'],
+        'DIRS': [
+            BASE_DIR / 'templates',
+            BASE_DIR / 'Web' / 'preciouscoffer-web.webflow',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
